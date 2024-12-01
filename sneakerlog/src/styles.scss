@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply font-sans;
+  }
+
+.bg-button {
+    @apply bg-blue-600;
+}
+
+.hover\:bg-button:hover {
+    @apply bg-blue-800;
+}
