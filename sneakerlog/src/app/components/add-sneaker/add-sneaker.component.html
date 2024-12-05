@@ -1,24 +1,16 @@
-<button (click) = "addSneakerModal()" type="button" class="items-center p-2 w-10 h-10 
-bg-button rounded-lg hover:bg-button">
-      <svg class="w-[24px] h-[24px] text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5 12h14m-7 7V5" />
-      </svg>
-</button>
 
 <!-- Main modal -->
 @if (isModal){
 <div (click)="onBackdropClick($event)" 
-class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+class="max-w-sm mx-auto fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
     <div id="modal-content" 
-    class="relative p-4 w-full max-w-md max-h-full bg-gray-700 rounded-lg shadow-lg">
+    class="relative p-4 w-full max-w-sm max-h-full bg-gray-700 rounded-lg shadow-lg">
         <!-- Modal content -->
         <div class="relative">
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                 <h3 class="text-lg font-semibold text-white">
-                    Add new shoes
+                    Add new sneaker
                 </h3>
                 <button (click)="closeModal()" type="button" 
                 class="text-white bg-transparent rounded-lg text-sm w-8 h-8 
@@ -31,15 +23,15 @@ class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacit
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5">
+            <form [formGroup]="sneakerForm" (ngSubmit)="submitForm()" class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2 sm:col-span-1">
                         <label for="brand" 
                         class="block mb-2 text-sm font-medium text-white">
                             Brand
                         </label>
-                        <select id="brand" class="border text-sm rounded-lg block w-full p-2.5 
-                        bg-gray-600 border-gray-500 focus:border-blue-500 text-white" required="">
+                        <select formControlName="brand" id="brand" class="border text-sm rounded-lg block w-full p-2.5 
+                        bg-gray-600 border-gray-500 focus:border-blue-500 text-white" required>
                             <option *ngFor="let brand of brands" [value]="brand.value" >
                                 {{ brand.label }}
                             </option>
@@ -49,15 +41,15 @@ class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacit
                         <label for="Model" class="block mb-2 text-sm font-medium text-white">
                            Model
                         </label>
-                        <input name="model" id="model" class="border text-sm rounded-lg block w-full p-2.5 
+                        <input formControlName="model" name="model" id="model" class="border text-sm rounded-lg block w-full p-2.5 
                         bg-gray-600 border-gray-500  text-white" 
-                         placeholder="Model name" required="">
+                         placeholder="Model name" required>
                     </div>
-                    <div class="col-span-2 sm:col-span-1">
+                    <div type="number" class="col-span-2 sm:col-span-1">
                         <label for="purchased-price" class="block mb-2 text-sm font-medium text-white">
                            Purchased Price
                         </label>
-                        <input name="purchased-price" id="purchased-price" class="border text-sm rounded-lg block w-full p-2.5 
+                        <input formControlName="purchasedPrice" name="purchased-price" id="purchased-price" class="border text-sm rounded-lg block w-full p-2.5 
                         bg-gray-600 border-gray-500  text-white" 
                          placeholder="Purchased price" required="">
                     </div>
@@ -65,7 +57,7 @@ class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacit
                         <label for="purchased-date" class="block mb-2 text-sm font-medium text-white">
                            Purchased Date
                         </label>
-                        <input type="date" name="purchased-date" id="purchased-date" class="border text-sm rounded-lg block w-full p-2.5 
+                        <input formControlName="purchasedDate" type="date" name="purchased-date" id="purchased-date" class="border text-sm rounded-lg block w-full p-2.5 
                         bg-gray-600 border-gray-500  text-white" 
                          placeholder="Purchased date">
                     </div>
@@ -73,7 +65,7 @@ class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacit
                         <label for="current-distance" class="block mb-2 text-sm font-medium text-white">
                            Current Distance (KM)
                         </label>
-                        <input type="number" name="current-distance" id="current-distance" class="border text-sm rounded-lg block w-full p-2.5 
+                        <input type="number" formControlName="currentDistance" name="current-distance" id="current-distance" class="border text-sm rounded-lg block w-full p-2.5 
                         bg-gray-600 border-gray-500  text-white" 
                          placeholder="0KM">
                     </div>
@@ -81,7 +73,7 @@ class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacit
                         <label for="target-distance" class="block mb-2 text-sm font-medium text-white">
                            Target Distance (KM)
                         </label>
-                        <input type="number" name="target-distance" id="target-distance" class="border text-sm rounded-lg block w-full p-2.5 
+                        <input type="number" formControlName="targetDistance" name="target-distance" id="target-distance" class="border text-sm rounded-lg block w-full p-2.5 
                         bg-gray-600 border-gray-500  text-white" 
                          placeholder="~300KM">
                     </div>
@@ -89,7 +81,7 @@ class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacit
                         <label for="usage-count" class="block mb-2 text-sm font-medium text-white">
                            Usage Count
                         </label>
-                        <input type="number" name="usage-count" id="usage-count" class="border text-sm rounded-lg block w-full p-2.5 
+                        <input type="number" formControlName="usageCount" name="usage-count" id="usage-count" class="border text-sm rounded-lg block w-full p-2.5 
                         bg-gray-600 border-gray-500  text-white" 
                          placeholder="The estimated value based on usage distance">
                     </div>

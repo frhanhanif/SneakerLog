@@ -1,14 +1,44 @@
-import { Component } from '@angular/core';
-import {CommonModule} from '@angular/common'
+import { Component, inject } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import { Sneaker } from '../../shared/sneaker.model'
+import { SneakerService } from '../../shared/sneaker.service';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-sneaker',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './add-sneaker.component.html',
   styleUrl: './add-sneaker.component.scss'
 })
 export class AddSneakerComponent {
+
+  sneakerForm : FormGroup;
+  constructor(private fb:FormBuilder, private sneakerService:SneakerService){
+    this.sneakerForm = this.fb.group({
+      id:[null],
+      brand:['', Validators.required],
+      model:['', Validators.required],
+      purchasedPrice:[0, [Validators.required,Validators.min(0)]],
+      purchasedDate:[''],
+      currentDistance:[0,Validators.min(0)],
+      targetDistance:[300,Validators.min(1)],
+      usageCount:[0,Validators.min(0)],
+    })
+  }
+
+  private getDefaultFormValues() {
+    return {
+      id: null,
+      brand: '',
+      model: '',
+      purchasedPrice: 0,
+      purchasedDate: '',
+      currentDistance: 0,
+      targetDistance: 300,
+      usageCount: 0,
+    };
+  }
 
   brands = [
     { value: '', label: 'Select Brand' },
@@ -25,11 +55,10 @@ export class AddSneakerComponent {
   ];
 
   selectedBrand: string = '';
-
   isModal : boolean = false
 
-  addSneakerModal(){
-    this.isModal = !this.isModal;
+  openModal(){
+    this.isModal = true;
   }
 
   closeModal(){
@@ -44,7 +73,13 @@ export class AddSneakerComponent {
   }
 
   submitForm(): void {
-    console.log('Selected Brand:', this.selectedBrand);
-    // Additional logic can go here
+    if(this.sneakerForm.valid) {
+      const newSneaker = this.sneakerForm.value;
+      this.sneakerService.addSneaker(newSneaker);
+      console.log(newSneaker)
+      this.sneakerForm.reset(this.getDefaultFormValues())
+      this.closeModal()
+    } 
   }
+
 }

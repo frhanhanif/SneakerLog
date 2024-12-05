@@ -1,7 +1,21 @@
-<section class="flex items-center justify-center min-h-[70vh]">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-        <h1 class="mb-4 text-2xl font-semibold text-white md:text-5xl lg:text-6xl">
-            Add your first pair of shoes by clicking '+' button in the top right corner
+@if (sneakers.length>0) {
+    <h1 class="text-white font-bold text-2xl p-5">Sneaker List</h1>
+    <div class="m-2 pb-16">
+        @for(sneaker of sneakers; track sneaker){
+            <app-sneaker [sneaker]="sneaker"></app-sneaker>
+        }
+    </div>
+}
+@else {
+    <div class="py-8 px-4 mx-auto max-w-screen-xl mt-40 text-center lg:py-16 lg:px-12">
+        <h1 class="mb-4 text-2xl font-semibold text-white">
+            Add your first pair of shoes by clicking '+' button
         </h1>
     </div>
-</section>
+}
+
+
+
+
+
+

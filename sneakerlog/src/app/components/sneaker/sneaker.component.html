@@ -1,0 +1,36 @@
+<div class="px-4">
+    <div class="bg-gray-700 shadow-md rounded-xl p-2 mx-auto m-4 flex sm:max-w-full items-center space-x-4 w-full max-w-sm">
+        <!-- Shoe Icon -->
+        <!-- <div class="flex-shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l7-7 7 7" />
+          </svg>
+        </div> -->
+        <!-- Text Content -->
+        <div class="flex-grow w-full m-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="text-sm pb-1 text-white">{{sneaker.brand}}</div>
+              <div class="text-base pb-1 font-bold text-white">{{sneaker.model}}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-sm text-gray-300">Purchased: {{ sneaker.purchasedDate}}</div>
+              <div class="text-sm text-gray-300">Price: Rp{{ sneaker.purchasedPrice }}</div>
+            </div>
+          </div>
+          <div class="text-xs text-gray-300">Usage: {{sneaker.usageCount}}x </div>
+          <div class="mt-2 flex items-center space-x-2 w-full">
+            <span class="text-xs text-white">
+              {{sneaker.currentDistance}} / {{sneaker.targetDistance}} km
+            </span>
+            <!-- Progress Bar -->
+            <div class="flex-grow h-2 bg-gray-200 rounded-full">
+                <div class="h-2 bg-blue-500 rounded-full" 
+                [style.width.%]="calculateProgress(sneaker.currentDistance, sneaker.targetDistance)">
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+  
