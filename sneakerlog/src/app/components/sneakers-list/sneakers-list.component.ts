@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SneakerComponent } from '../sneaker/sneaker.component';
 import { SneakerService } from '../../shared/sneaker.service';
 import { Sneaker } from '../../shared/sneaker.model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sneakers-list',
   standalone: true,
-  imports: [SneakerComponent],
+  imports: [SneakerComponent,RouterModule],
   templateUrl: './sneakers-list.component.html',
   styleUrl: './sneakers-list.component.scss'
 })
