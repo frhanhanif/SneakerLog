@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { SneakerComponent } from '../sneaker/sneaker.component';
+import { SneakerComponent } from './sneaker/sneaker.component';
 import { SneakerService } from '../../shared/sneaker.service';
 import { Sneaker } from '../../shared/sneaker.model';
 import { RouterModule } from '@angular/router';

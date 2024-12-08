@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Sneaker } from '../../shared/sneaker.model';
+import { Sneaker } from '../../../shared/sneaker.model';
 
 @Component({
   selector: 'app-sneaker',

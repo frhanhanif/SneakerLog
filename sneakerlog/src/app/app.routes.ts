@@ -7,6 +7,11 @@ export const routes: Routes = [
     },
     {
         path:'sneaker-detail',
-        loadComponent: () => import("./components/sneaker-detail/sneaker-detail.component")
-    }
+        loadComponent: () => import("./components/sneakers-list/sneaker/sneaker-detail/sneaker-detail.component")
+    },
+    {
+        path:'sneaker-detail/price-info',
+        loadComponent: () => import("./components/sneakers-list/sneaker/sneaker-detail/price-info/price-info.component")
+    },
+    
 ];

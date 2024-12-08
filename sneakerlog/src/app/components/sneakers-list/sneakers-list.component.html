@@ -1,6 +1,6 @@
 @if (sneakers.length>0) {
-    <h1 class="text-white font-bold text-2xl p-4">Sneaker List</h1>
-    <h2 class="text-white font-bold text-xl p-4">Active ({{sneakers.length}})</h2>
+    <h1 class="  font-bold text-2xl p-4">Sneaker List</h1>
+    <h2 class="  font-bold text-xl p-4">Active ({{sneakers.length}})</h2>
     <div class="m-2 pb-16">
         @for(sneaker of sneakers; track sneaker){
             <a routerLink="/sneaker-detail">
@@ -11,7 +11,7 @@
 }
 @else {
     <div class="py-8 px-4 mx-auto max-w-screen-xl mt-40 text-center lg:py-16 lg:px-12">
-        <h1 class="mb-4 text-2xl font-semibold text-white">
+        <h1 class="mb-4 text-2xl font-semibold  ">
             Add your first pair of shoes by clicking '+' button
         </h1>
     </div>
