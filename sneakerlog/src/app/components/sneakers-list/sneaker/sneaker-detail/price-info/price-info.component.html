@@ -1,3 +1,4 @@
+<app-back-icon></app-back-icon>
 <div class="p-4 pt-16 bg-gray-800 space-y-4">
     <h2 class="text-lg font-bold text-center">Price Per KM</h2>
     
@@ -6,9 +7,9 @@
       <table class="w-full table-auto text-sm min-w-[300px]">
         <thead>
           <tr>
-            <th class="border whitespace-nowrap border-gray-600 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-center">Well Spent</th>
-            <th class="border whitespace-nowrap border-gray-600 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-center">Decent Value</th>
-            <th class="border whitespace-nowrap border-gray-600 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-center">Overpriced</th>
+            <th class="border whitespace-nowrap border-gray-600 px-2 py-1 bg-green-600 text-center">Well Spent</th>
+            <th class="border whitespace-nowrap border-gray-600 px-2 py-1 bg-yellow-600 text-center">Decent Value</th>
+            <th class="border whitespace-nowrap border-gray-600 px-2 py-1 bg-red-600 text-center">Overpriced</th>
           </tr>
         </thead>
         <tbody>
@@ -22,9 +23,9 @@
     </div>
   
 <div class="text-sm p-2">
-    <ul class="list-disc pl-5 space-y-4 text-sm text-gray-700 dark:text-gray-300">
+    <ul class="list-disc pl-5 space-y-4 text-sm text-gray-300">
         <li>
-          <strong>Well Spent:</strong><br>
+          <strong class="bg-green-600">Well Spent:</strong><br>
           <span>
             Shoes in this category have provided excellent value for 
             their cost and are now in the ideal zone to be retired or sold. 
@@ -33,7 +34,7 @@
           </span>
         </li>
         <li>
-          <strong>Decent Value:</strong><br>
+          <strong class="bg-yellow-600">Decent Value:</strong><br>
           <span>
             These shoes are decent in terms of value but may not yet 
             have reached their full potential. If retired or sold now, 
@@ -42,7 +43,7 @@
           </span>
         </li>
         <li>
-          <strong>Overpriced:</strong><br>
+          <strong class="bg-red-600">Overpriced:</strong><br>
           <span>
             Shoes in this category have not provided sufficient value 
             for their cost. Retiring or selling them now would result in a loss, 

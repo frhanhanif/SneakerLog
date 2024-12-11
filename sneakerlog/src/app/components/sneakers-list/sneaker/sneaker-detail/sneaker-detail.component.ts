@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { BackIconComponent } from '../../../back-icon/back-icon.component';
 
 @Component({
   selector: 'app-sneaker-detail',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, BackIconComponent],
   templateUrl: './sneaker-detail.component.html',
   styleUrl: './sneaker-detail.component.scss'
 })

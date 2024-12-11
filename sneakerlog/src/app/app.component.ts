@@ -7,14 +7,10 @@ import { AddSneakerComponent } from './components/add-sneaker/add-sneaker.compon
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderComponent,BottomNavComponent,AddSneakerComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  @ViewChild(AddSneakerComponent) addSneakerModal!: AddSneakerComponent;
 
-  openAddSneakerModal = () => {
-    this.addSneakerModal.openModal();
-  };
 }

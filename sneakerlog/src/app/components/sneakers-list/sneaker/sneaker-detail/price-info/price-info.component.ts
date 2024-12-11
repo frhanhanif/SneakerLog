@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { BackIconComponent } from '../../../../back-icon/back-icon.component';
 
 @Component({
   selector: 'app-price-info',
   standalone: true,
-  imports: [],
+  imports: [BackIconComponent],
   templateUrl: './price-info.component.html',
   styleUrl: './price-info.component.scss'
 })
