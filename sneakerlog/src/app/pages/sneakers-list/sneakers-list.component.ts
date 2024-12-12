@@ -26,6 +26,7 @@ export default class SneakersListComponent implements OnInit {
         this.sneakers=data
       }
     )
+    console.log(this.sneakers)
   }
 
 

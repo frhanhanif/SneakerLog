@@ -7,6 +7,7 @@ import { DeleteSneakerComponent } from '../../components/delete-sneaker/delete-s
 import { SaveSneakerComponent } from '../../components/save-sneaker/save-sneaker.component';
 import { CircleProgressComponent } from "../../components/circle-progress/circle-progress.component";
 import { PriceOverviewComponent } from "../../components/price-overview/price-overview.component";
+import { SneakerService } from '../../shared/sneaker.service';
 
 
 @Component({
@@ -21,21 +22,27 @@ import { PriceOverviewComponent } from "../../components/price-overview/price-ov
   styleUrl: './sneaker-detail.component.scss'
 })
 export default class SneakerDetailComponent implements OnInit {
+  sneaker:any;
   id:number=0;
-  percentage:number = 80;
+  percentage:number = 90;
   distance:number = 0;
+  targetDistance:number = 500
   price:number = 300000;
+  usageCount:number = 0
   activatedRout = inject(ActivatedRoute)
+  sneakerService = inject(SneakerService)
 
   ngOnInit(): void {
       this.activatedRout.paramMap.subscribe(
         (param) => {
-          this.id=Number(param.get('sneaker-id'))
+          this.id=Number(param.get('sneaker-id'));
+          this.sneaker = this.sneakerService.getSneakers().find((data) => data.id === this.id)
+
       }
     )
-    console.log(this.id)
+    console.log(this.sneaker)
   }
-  usageCount:number = 0
+
   incrUsageCount(){
     if(this.usageCount<999){
       this.usageCount++
@@ -70,30 +77,6 @@ export default class SneakerDetailComponent implements OnInit {
     // Only update usageCount if value is valid
     if (!isNaN(value) && value >= 0 && value <= 999) {
       this.distance = value;
-    }
-  }
-
-  get pricePerKM(): number {
-    return this.distance === 0 ? this.price : this.price / this.distance;
-  }
-
-  get pricePerKMCategory(): string {
-    if (this.pricePerKM < 5000) {
-      return 'Well Spent';
-    } else if (this.pricePerKM < 10000) {
-      return 'Decent';
-    } else {
-      return 'Overpriced';
-    }
-  }
-  
-  get pricePerKMCategoryClass(): string {
-    if (this.pricePerKM < 5000) {
-      return 'bg-green-600 text-white';
-    } else if (this.pricePerKM < 10000) {
-      return 'bg-yellow-600 text-white';
-    } else {
-      return 'bg-red-600 text-white';
     }
   }
 

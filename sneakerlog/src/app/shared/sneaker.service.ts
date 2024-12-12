@@ -27,16 +27,28 @@ export class SneakerService {
     return this.sneakersSubject.getValue();
   }
 
+  saveToLocalStorage(sneakers:Sneaker[]){
+    localStorage.setItem(this.localStorageKey, JSON.stringify(sneakers));
+    this.sneakersSubject.next(sneakers)
+  }
+
   // Add a new sneaker to Local Storage
   addSneaker(newSneaker: Sneaker): void {
     const sneakers = this.getSneakers();
-    newSneaker.id = sneakers.length > 0 ? 
-    sneakers[sneakers.length - 1].id + 1 : 1; // Assign ID
+    newSneaker.id = sneakers.length > 0 ? sneakers[sneakers.length - 1].id + 1 : 1; // Assign ID
     sneakers.push(newSneaker);
-    localStorage.setItem(this.localStorageKey, JSON.stringify(sneakers));
-
-    //Notify change to subject
-    this.sneakersSubject.next(sneakers)
+    this.saveToLocalStorage(sneakers)
   }
+
+  updateSneaker(){
+
+  }
+
+  deleteSneaker(id:number | null){
+    const sneaker = this.getSneakers();
+    const deleteSneaker = sneaker.filter(sneaker =>sneaker.id !==id  && sneaker.id !== null && !isNaN(sneaker.id));
+    this.saveToLocalStorage(deleteSneaker)
+  }
+
   
 }

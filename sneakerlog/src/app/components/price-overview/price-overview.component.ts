@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SneakerService } from '../../shared/sneaker.service';
 
 @Component({
   selector: 'app-price-overview',
@@ -11,8 +12,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './price-overview.component.scss'
 })
 export class PriceOverviewComponent {
-  distance:number = 0;
-  price:number = 30000;
+  @Input() distance:number = 0;
+  @Input() price:number = 0;
+
+  sneakerService = inject(SneakerService)
   get pricePerKM(): number {
     return this.distance === 0 ? this.price : this.price / this.distance;
   }

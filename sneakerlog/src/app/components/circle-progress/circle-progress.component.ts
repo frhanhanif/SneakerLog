@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-circle-progress',
@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
 })
 export class CircleProgressComponent {
 
-  percentage:number = 70;
+  @Input() percentage:number = 0;
   distance:number = 0
 }

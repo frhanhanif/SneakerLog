@@ -2,15 +2,19 @@
 
 <div class="p-4 pt-16 px-12 text-xl">
   <div class="flex justify-between items-center">
-    <h1 class="font-extrabold">Hoka</h1>
+    <h1 class="font-extrabold">{{sneaker.brand}}</h1>
     <h2 class="text-right text-sm">Purchased: dd/mm/yy</h2>
   </div>
-  <h2 class="font-bold">Clifton 9</h2>
+  <h2 class="font-bold">{{sneaker.model}}</h2>
 </div>
 
   <!-- Circular Progress and Counters -->
 <div class="flex items-center justify-center space-x-12">
-  <app-circle-progress></app-circle-progress>
+  <app-circle-progress [percentage] = "percentage">
+    <div class="mt-4 text-sm items-center text-center pl-2">
+      Distance : {{ sneaker.currentDistance }} / {{sneaker.targetDistance}}
+    </div>
+  </app-circle-progress>
 
   <div class="flex flex-col space-y-6">
 
@@ -19,20 +23,10 @@
       <label class="text-sm font-medium mb-2">Usage Count :</label>
       <div class="flex items-center space-x-4">
         <button
-          type="button"
-          id="decrement-button"
-          (click)="decrUsageCount()"
-          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6"
-        >
-          <svg
-            class="w-2.5 h-2.5 text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 18 2"
-          >
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-          </svg>
+          type="button" id="decrement-button" (click)="decrUsageCount()"
+          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex 
+          items-center justify-center rounded-md h-6 w-6 text-2xl">
+            -
         </button>
         <input
           type="number"
@@ -42,26 +36,9 @@
           required
         />
         <button
-          type="button"
-          id="increment-button"
-          (click)="incrUsageCount()"
-          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6"
-        >
-          <svg
-            class="w-2.5 h-2.5 text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 18 18"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 1v16M1 9h16"
-            />
-          </svg>
+          type="button" id="increment-button"  (click)="incrUsageCount()"
+          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6 text-2xl">
+            +
         </button>
       </div>
     </div>
@@ -71,20 +48,10 @@
       <label class="text-sm font-medium mb-2">Current Distance :</label>
       <div class="flex items-center space-x-4">
         <button
-          type="button"
-          id="decrement-button"
-          (click)="decrDistance()"
-          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6"
-        >
-          <svg
-            class="w-2.5 h-2.5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 18 2"
-          >
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-          </svg>
+          type="button" id="decrement-button" (click)="decrDistance()"
+          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 
+          inline-flex items-center justify-center rounded-md h-6 w-6 text-2xl">
+            -
         </button>
         <input
           type="number"
@@ -94,26 +61,10 @@
           required
         />
         <button
-          type="button"
-          id="increment-button"
-          (click)="incrDistance()"
-          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6"
-        >
-          <svg
-            class="w-2.5 h-2.5 text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 18 18"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 1v16M1 9h16"
-            />
-          </svg>
+          type="button" id="increment-button" (click)="incrDistance()"
+          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex 
+          items-center justify-center rounded-md h-6 w-6 text-2xl">
+            +
         </button>
       </div>
     </div>
@@ -122,11 +73,11 @@
 </div>
 
 <div class="p-16 pb-8 text-sm">
-  <app-price-overview></app-price-overview>
+  <app-price-overview [distance]="sneaker.currentDistance" [price]="sneaker.purchasedPrice"></app-price-overview>
 </div>
 
-<div class="flex items-center space-x-4 pl-8">
+<div class="flex items-center justify-center space-x-6">
   <app-save-sneaker></app-save-sneaker>
-  <app-delete-sneaker></app-delete-sneaker>
+  <app-delete-sneaker [id]="id"></app-delete-sneaker>
 </div>
 
