@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BackIconComponent } from '../../../../back-icon/back-icon.component';
+import { BackIconComponent } from '../../components/back-icon/back-icon.component';
 
 @Component({
   selector: 'app-price-info',

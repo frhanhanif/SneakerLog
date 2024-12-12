@@ -1,25 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { BackIconComponent } from '../../../back-icon/back-icon.component';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { BackIconComponent } from '../../components/back-icon/back-icon.component';
+import { DeleteSneakerComponent } from '../../components/delete-sneaker/delete-sneaker.component';
+import { SaveSneakerComponent } from '../../components/save-sneaker/save-sneaker.component';
+import { CircleProgressComponent } from "../../components/circle-progress/circle-progress.component";
+import { PriceOverviewComponent } from "../../components/price-overview/price-overview.component";
+
 
 @Component({
   selector: 'app-sneaker-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, BackIconComponent],
+  imports: [
+    CommonModule, FormsModule, RouterModule, BackIconComponent,
+    DeleteSneakerComponent, SaveSneakerComponent, CircleProgressComponent,
+    PriceOverviewComponent
+],
   templateUrl: './sneaker-detail.component.html',
   styleUrl: './sneaker-detail.component.scss'
 })
-export default class SneakerDetailComponent {
+export default class SneakerDetailComponent implements OnInit {
+  id:number=0;
   percentage:number = 80;
-  usageCount:number = 0
   distance:number = 0;
   price:number = 300000;
-  percentageToRotate(percentage: number): number {
-    return (percentage / 100) * 360;
-  }
+  activatedRout = inject(ActivatedRoute)
 
+  ngOnInit(): void {
+      this.activatedRout.paramMap.subscribe(
+        (param) => {
+          this.id=Number(param.get('sneaker-id'))
+      }
+    )
+    console.log(this.id)
+  }
+  usageCount:number = 0
   incrUsageCount(){
     if(this.usageCount<999){
       this.usageCount++
@@ -30,9 +46,7 @@ export default class SneakerDetailComponent {
     if(this.usageCount>0){
       this.usageCount--
     }
-
   }
-
   incrDistance(){
     if(this.distance<999){
       this.distance++
@@ -44,6 +58,9 @@ export default class SneakerDetailComponent {
     if(this.distance>0){
       this.distance--
     }
+  }
+  percentageToRotate(percentage: number): number {
+    return (percentage / 100) * 360;
   }
 
   updateDistance(event: any) {

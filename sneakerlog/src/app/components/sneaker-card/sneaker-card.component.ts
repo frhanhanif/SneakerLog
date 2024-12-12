@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { Sneaker } from '../../../shared/sneaker.model';
+import { Sneaker } from '../../shared/sneaker.model';
 
 @Component({
-  selector: 'app-sneaker',
+  selector: 'app-sneaker-card',
   standalone: true,
   imports: [],
-  templateUrl: './sneaker.component.html',
-  styleUrl: './sneaker.component.scss'
+  templateUrl: './sneaker-card.component.html',
+  styleUrl: './sneaker-card.component.scss'
 })
-export class SneakerComponent {
+export class SneakerCardComponent {
 
   @Input() sneaker!: Sneaker;
 

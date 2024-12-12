@@ -1,15 +1,15 @@
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { SneakerComponent } from './sneaker/sneaker.component';
 import { SneakerService } from '../../shared/sneaker.service';
 import { Sneaker } from '../../shared/sneaker.model';
 import { RouterModule } from '@angular/router';
-import { AddSneakerComponent } from '../add-sneaker/add-sneaker.component';
-import { BottomNavComponent } from '../bottom-nav/bottom-nav.component';
+import { AddSneakerComponent } from '../../components/add-sneaker/add-sneaker.component';
+import { SneakerCardComponent } from '../../components/sneaker-card/sneaker-card.component';
+
 
 @Component({
   selector: 'app-sneakers-list',
   standalone: true,
-  imports: [SneakerComponent,RouterModule,AddSneakerComponent],
+  imports: [SneakerCardComponent,RouterModule,AddSneakerComponent],
   templateUrl: './sneakers-list.component.html',
   styleUrl: './sneakers-list.component.scss'
 })
@@ -26,8 +26,6 @@ export default class SneakersListComponent implements OnInit {
         this.sneakers=data
       }
     )
-    console.log(this.sneakerService.getSneakers())
-
   }
 
 
