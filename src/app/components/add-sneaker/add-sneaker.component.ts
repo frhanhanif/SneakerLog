@@ -71,14 +71,18 @@ export class AddSneakerComponent {
       this.closeModal();
     }
   }
-
-  submitForm(): void {
+  
+  async submitForm(): Promise<void> {
     if(this.sneakerForm.valid) {
       const newSneaker = this.sneakerForm.value;
-      this.sneakerService.addSneaker(newSneaker);
-      console.log(newSneaker)
-      this.sneakerForm.reset(this.getDefaultFormValues())
-      this.closeModal()
+      try {
+        await this.sneakerService.addSneaker(newSneaker);
+        console.log('Sneaker added:', newSneaker);
+        this.sneakerForm.reset(this.getDefaultFormValues());
+        this.closeModal();
+      } catch (error) {
+        console.error('Failed to submit form:', error);
+      }
     } 
   }
 

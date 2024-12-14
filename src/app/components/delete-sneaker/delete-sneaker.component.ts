@@ -21,6 +21,7 @@ export class DeleteSneakerComponent {
 
   openDeleteModal() {
     this.isDeleteModalOpen = true;
+    console.log(this.id)
   }
 
   closeDeleteModal() {
@@ -28,7 +29,6 @@ export class DeleteSneakerComponent {
   }
 
   deleteSneakers() {
-    console.log(this.id)
     this.sneakerService.deleteSneaker(this.id);
     this.router.navigate(['/'])
   }

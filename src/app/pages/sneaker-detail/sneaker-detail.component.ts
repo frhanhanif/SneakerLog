@@ -8,6 +8,7 @@ import { SaveSneakerComponent } from '../../components/save-sneaker/save-sneaker
 import { CircleProgressComponent } from "../../components/circle-progress/circle-progress.component";
 import { PriceOverviewComponent } from "../../components/price-overview/price-overview.component";
 import { SneakerService } from '../../shared/sneaker.service';
+import { DatabaseService } from '../../shared/database.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { SneakerService } from '../../shared/sneaker.service';
   standalone: true,
   imports: [
     CommonModule, FormsModule, RouterModule, BackIconComponent,
-    DeleteSneakerComponent, SaveSneakerComponent, CircleProgressComponent,
+    DeleteSneakerComponent, CircleProgressComponent,
     PriceOverviewComponent
 ],
   templateUrl: './sneaker-detail.component.html',
@@ -23,21 +24,22 @@ import { SneakerService } from '../../shared/sneaker.service';
 })
 export default class SneakerDetailComponent implements OnInit {
   sneaker:any;
-  id:number=0;
-  percentage:number = 90;
-  distance:number = 0;
+  id!:number;
+  percentage:number = 0;
   targetDistance:number = 500
   price:number = 300000;
   usageCount:number = 0
+
   activatedRout = inject(ActivatedRoute)
   sneakerService = inject(SneakerService)
+  db = inject(DatabaseService)
 
   ngOnInit(): void {
       this.activatedRout.paramMap.subscribe(
-        (param) => {
+        async (param) => {
           this.id=Number(param.get('sneaker-id'));
-          this.sneaker = this.sneakerService.getSneakers().find((data) => data.id === this.id)
-
+          this.sneaker = await this.db.sneakers.get(this.id); 
+          this.calculatePercentage()
       }
     )
     console.log(this.sneaker)
@@ -55,29 +57,41 @@ export default class SneakerDetailComponent implements OnInit {
     }
   }
   incrDistance(){
-    if(this.distance<999){
-      this.distance++
+    if(this.sneaker && this.sneaker.currentDistance<9999){
+      this.sneaker.currentDistance++
+      this.updateSneaker()
+      this.calculatePercentage()
     }
-
   }
 
   decrDistance(){
-    if(this.distance>0){
-      this.distance--
+    if(this.sneaker && this.sneaker.currentDistance>0){
+      this.sneaker.currentDistance--
+      this.updateSneaker()
+      this.calculatePercentage()
     }
-  }
-  percentageToRotate(percentage: number): number {
-    return (percentage / 100) * 360;
   }
 
-  updateDistance(event: any) {
-    const inputElement = event.target as HTMLInputElement;
-    const value = parseInt(inputElement.value, 10);
-  
-    // Only update usageCount if value is valid
-    if (!isNaN(value) && value >= 0 && value <= 999) {
-      this.distance = value;
+  calculatePercentage(){
+    this.percentage = this.sneaker.currentDistance > this.sneaker.targetDistance ? 100 :
+     Math.round((this.sneaker.currentDistance/this.sneaker.targetDistance) * 100);
+  }
+
+  inputDistance(){
+    if (this.sneaker) {
+      if (this.sneaker.currentDistance > 9999) {
+        this.sneaker.currentDistance = 9999;
+      } else if (this.sneaker.currentDistance < 0) {
+        this.sneaker.currentDistance = 0;
+      }
+
+      this.sneakerService.updateSneaker(this.sneaker);
+      this.calculatePercentage()
     }
+  }
+
+  updateSneaker(){
+    this.sneakerService.updateSneaker(this.sneaker);
   }
 
 

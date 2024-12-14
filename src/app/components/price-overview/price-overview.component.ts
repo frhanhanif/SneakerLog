@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SneakerService } from '../../shared/sneaker.service';
@@ -11,13 +11,16 @@ import { SneakerService } from '../../shared/sneaker.service';
   templateUrl: './price-overview.component.html',
   styleUrl: './price-overview.component.scss'
 })
-export class PriceOverviewComponent {
-  @Input() distance:number = 0;
-  @Input() price:number = 0;
+export class PriceOverviewComponent implements OnInit {
+  @Input() sneaker:any
 
   sneakerService = inject(SneakerService)
+
+  ngOnInit(): void {
+      console.log(this.sneaker)
+  }
   get pricePerKM(): number {
-    return this.distance === 0 ? this.price : this.price / this.distance;
+    return this.sneaker.currentDistance === 0 ? this.sneaker.purchasedPrice : this.sneaker.purchasedPrice / this.sneaker.currentDistance;
   }
 
   get pricePerKMCategory(): string {

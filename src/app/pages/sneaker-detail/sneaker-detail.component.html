@@ -2,14 +2,21 @@
 
 <div class="p-4 pt-16 px-12 text-xl">
   <div class="flex justify-between items-center">
-    <h1 class="font-extrabold">{{sneaker.brand}}</h1>
-    <h2 class="text-right text-sm">Purchased: dd/mm/yy</h2>
+    <input [(ngModel)]="sneaker.brand" (change)="updateSneaker()" 
+    class="font-extrabold bg-transparent max-w-[12rem]"/>
+    <h2 class="text-right text-sm">Purchased: </h2>
   </div>
-  <h2 class="font-bold">{{sneaker.model}}</h2>
+  <div class="flex justify-between items-center">
+    <input [(ngModel)]="sneaker.model" (change)="updateSneaker()" 
+    class="font-extrabold bg-transparent max-w-[12rem]"/>
+    <input [(ngModel)]="sneaker.purchasedDate" (change)="updateSneaker()"
+    class="text-sm bg-transparent max-w-[5rem]"/>
+  </div>
+
 </div>
 
   <!-- Circular Progress and Counters -->
-<div class="flex items-center justify-center space-x-12">
+<div class="flex items-center justify-center space-x-12 pt-4">
   <app-circle-progress [percentage] = "percentage">
     <div class="mt-4 text-sm items-center text-center pl-2">
       Distance : {{ sneaker.currentDistance }} / {{sneaker.targetDistance}}
@@ -56,8 +63,9 @@
         <input
           type="number"
           id="counter-input"
-          class="flex-shrink-0 rounded-xl p-1 bg-transparent text-sm max-w-[2.5rem] text-center focus:border"
-          [(ngModel)]="distance"
+          class="flex-shrink-0 rounded-xl p-1 bg-transparent text-sm max-w-[3rem] text-center focus:border"
+          [(ngModel)]="sneaker.currentDistance"
+          (change)="inputDistance()"
           required
         />
         <button
@@ -73,11 +81,11 @@
 </div>
 
 <div class="p-16 pb-8 text-sm">
-  <app-price-overview [distance]="sneaker.currentDistance" [price]="sneaker.purchasedPrice"></app-price-overview>
+  <app-price-overview [sneaker]="sneaker"></app-price-overview>
 </div>
 
 <div class="flex items-center justify-center space-x-6">
-  <app-save-sneaker></app-save-sneaker>
+  <!-- <app-save-sneaker></app-save-sneaker> -->
   <app-delete-sneaker [id]="id"></app-delete-sneaker>
 </div>
 
