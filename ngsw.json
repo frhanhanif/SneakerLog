@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1734266508568,
-  "index": "https://frhanhanif.github.io/SneakerLog/index.html",
+  "timestamp": 1734267443800,
+  "index": "/SneakerLog/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -11,19 +11,19 @@
         "ignoreVary": true
       },
       "urls": [
-        "https://frhanhanif.github.io/SneakerLog/chunk-7FLJ4BGD.js",
-        "https://frhanhanif.github.io/SneakerLog/chunk-OHRJTEMD.js",
-        "https://frhanhanif.github.io/SneakerLog/chunk-Q3JJ2EMJ.js",
-        "https://frhanhanif.github.io/SneakerLog/chunk-QP5CQRWW.js",
-        "https://frhanhanif.github.io/SneakerLog/chunk-SGVMEF5L.js",
-        "https://frhanhanif.github.io/SneakerLog/chunk-V6V46GJ5.js",
-        "https://frhanhanif.github.io/SneakerLog/chunk-X2FCAIJE.js",
-        "https://frhanhanif.github.io/SneakerLog/favicon.ico",
-        "https://frhanhanif.github.io/SneakerLog/index.html",
-        "https://frhanhanif.github.io/SneakerLog/main-LE2DKC55.js",
-        "https://frhanhanif.github.io/SneakerLog/manifest.webmanifest",
-        "https://frhanhanif.github.io/SneakerLog/polyfills-FFHMD2TL.js",
-        "https://frhanhanif.github.io/SneakerLog/styles-F6XIHANC.css"
+        "/SneakerLog/chunk-7FLJ4BGD.js",
+        "/SneakerLog/chunk-OHRJTEMD.js",
+        "/SneakerLog/chunk-Q3JJ2EMJ.js",
+        "/SneakerLog/chunk-QP5CQRWW.js",
+        "/SneakerLog/chunk-SGVMEF5L.js",
+        "/SneakerLog/chunk-V6V46GJ5.js",
+        "/SneakerLog/chunk-X2FCAIJE.js",
+        "/SneakerLog/favicon.ico",
+        "/SneakerLog/index.html",
+        "/SneakerLog/main-LE2DKC55.js",
+        "/SneakerLog/manifest.webmanifest",
+        "/SneakerLog/polyfills-FFHMD2TL.js",
+        "/SneakerLog/styles-F6XIHANC.css"
       ],
       "patterns": []
     },
@@ -35,41 +35,41 @@
         "ignoreVary": true
       },
       "urls": [
-        "https://frhanhanif.github.io/SneakerLog/icons/icon-128x128.png",
-        "https://frhanhanif.github.io/SneakerLog/icons/icon-144x144.png",
-        "https://frhanhanif.github.io/SneakerLog/icons/icon-152x152.png",
-        "https://frhanhanif.github.io/SneakerLog/icons/icon-192x192.png",
-        "https://frhanhanif.github.io/SneakerLog/icons/icon-384x384.png",
-        "https://frhanhanif.github.io/SneakerLog/icons/icon-512x512.png",
-        "https://frhanhanif.github.io/SneakerLog/icons/icon-72x72.png",
-        "https://frhanhanif.github.io/SneakerLog/icons/icon-96x96.png"
+        "/SneakerLog/icons/icon-128x128.png",
+        "/SneakerLog/icons/icon-144x144.png",
+        "/SneakerLog/icons/icon-152x152.png",
+        "/SneakerLog/icons/icon-192x192.png",
+        "/SneakerLog/icons/icon-384x384.png",
+        "/SneakerLog/icons/icon-512x512.png",
+        "/SneakerLog/icons/icon-72x72.png",
+        "/SneakerLog/icons/icon-96x96.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "https://frhanhanif.github.io/SneakerLog/chunk-7FLJ4BGD.js": "a12f0fe06ec9a75b8190d6550e41500bf96be28d",
-    "https://frhanhanif.github.io/SneakerLog/chunk-OHRJTEMD.js": "aa3aa01f66cb810bd39735f9031bfdb20fed5ef4",
-    "https://frhanhanif.github.io/SneakerLog/chunk-Q3JJ2EMJ.js": "e8e7d0583a902f176ad7561e423fd9abbcb1d2de",
-    "https://frhanhanif.github.io/SneakerLog/chunk-QP5CQRWW.js": "09044d818b7abf55b871ad584b269fa4f99b08ec",
-    "https://frhanhanif.github.io/SneakerLog/chunk-SGVMEF5L.js": "cb0219bac26b7727c093ee9a424932ce489868cf",
-    "https://frhanhanif.github.io/SneakerLog/chunk-V6V46GJ5.js": "f4dcf26e8c6176b88800a01d6dac180723820c15",
-    "https://frhanhanif.github.io/SneakerLog/chunk-X2FCAIJE.js": "8670f4be2d0129eaac0efcfb452a54bb861e1b5f",
-    "https://frhanhanif.github.io/SneakerLog/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "https://frhanhanif.github.io/SneakerLog/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
-    "https://frhanhanif.github.io/SneakerLog/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
-    "https://frhanhanif.github.io/SneakerLog/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
-    "https://frhanhanif.github.io/SneakerLog/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
-    "https://frhanhanif.github.io/SneakerLog/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
-    "https://frhanhanif.github.io/SneakerLog/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
-    "https://frhanhanif.github.io/SneakerLog/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
-    "https://frhanhanif.github.io/SneakerLog/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "https://frhanhanif.github.io/SneakerLog/index.html": "73b0210ca335048dfd9019dd04ac9b98b30147d5",
-    "https://frhanhanif.github.io/SneakerLog/main-LE2DKC55.js": "ad581f9895189e4adda3b1966d4bb417b6c1ae31",
-    "https://frhanhanif.github.io/SneakerLog/manifest.webmanifest": "745588f80449c6610d7efe8bc00d76b0f2657e7c",
-    "https://frhanhanif.github.io/SneakerLog/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
-    "https://frhanhanif.github.io/SneakerLog/styles-F6XIHANC.css": "027b897cb569ec4cb7bb30a8a144de7a8ae3ab20"
+    "/SneakerLog/chunk-7FLJ4BGD.js": "a12f0fe06ec9a75b8190d6550e41500bf96be28d",
+    "/SneakerLog/chunk-OHRJTEMD.js": "aa3aa01f66cb810bd39735f9031bfdb20fed5ef4",
+    "/SneakerLog/chunk-Q3JJ2EMJ.js": "e8e7d0583a902f176ad7561e423fd9abbcb1d2de",
+    "/SneakerLog/chunk-QP5CQRWW.js": "09044d818b7abf55b871ad584b269fa4f99b08ec",
+    "/SneakerLog/chunk-SGVMEF5L.js": "cb0219bac26b7727c093ee9a424932ce489868cf",
+    "/SneakerLog/chunk-V6V46GJ5.js": "f4dcf26e8c6176b88800a01d6dac180723820c15",
+    "/SneakerLog/chunk-X2FCAIJE.js": "8670f4be2d0129eaac0efcfb452a54bb861e1b5f",
+    "/SneakerLog/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/SneakerLog/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/SneakerLog/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/SneakerLog/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/SneakerLog/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/SneakerLog/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/SneakerLog/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/SneakerLog/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/SneakerLog/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/SneakerLog/index.html": "09f427637d5ddb9b8a49b59e300e17ed44f5a6f0",
+    "/SneakerLog/main-LE2DKC55.js": "ad581f9895189e4adda3b1966d4bb417b6c1ae31",
+    "/SneakerLog/manifest.webmanifest": "745588f80449c6610d7efe8bc00d76b0f2657e7c",
+    "/SneakerLog/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/SneakerLog/styles-F6XIHANC.css": "027b897cb569ec4cb7bb30a8a144de7a8ae3ab20"
   },
   "navigationUrls": [
     {
