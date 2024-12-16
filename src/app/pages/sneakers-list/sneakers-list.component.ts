@@ -4,12 +4,13 @@ import { Sneaker } from '../../shared/sneaker.model';
 import { RouterModule } from '@angular/router';
 import { AddSneakerComponent } from '../../components/add-sneaker/add-sneaker.component';
 import { SneakerCardComponent } from '../../components/sneaker-card/sneaker-card.component';
+import { ReloadPageComponent } from "../../components/reload-page/reload-page.component";
 
 
 @Component({
   selector: 'app-sneakers-list',
   standalone: true,
-  imports: [SneakerCardComponent,RouterModule,AddSneakerComponent],
+  imports: [SneakerCardComponent, RouterModule, AddSneakerComponent, ReloadPageComponent],
   templateUrl: './sneakers-list.component.html',
   styleUrl: './sneakers-list.component.scss'
 })
