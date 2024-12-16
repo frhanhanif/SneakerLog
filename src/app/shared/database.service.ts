@@ -12,7 +12,7 @@ export class DatabaseService extends Dexie {
     super('SneakerDatabase');
     // Define the database schema
     this.version(1).stores({
-      sneakers: '++id, brand, model, purchasedPrice, purchasedDate, currentDistance, targetDistance, usageCount', 
+      sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount', 
       // '++id' defines an auto-incrementing primary key
     });
 

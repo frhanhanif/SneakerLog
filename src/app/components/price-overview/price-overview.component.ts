@@ -3,11 +3,12 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SneakerService } from '../../shared/sneaker.service';
+import { PriceFormatDirective } from '../../shared/price-format.directive';
 
 @Component({
   selector: 'app-price-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule,RouterModule,PriceFormatDirective],
   templateUrl: './price-overview.component.html',
   styleUrl: './price-overview.component.scss'
 })
@@ -19,6 +20,12 @@ export class PriceOverviewComponent implements OnInit {
   ngOnInit(): void {
       console.log(this.sneaker)
   }
+  updateSneaker(){
+    this.sneaker.purchasedPrice = parseFloat(this.sneaker.purchasedPrice.toString().replace(/,/g, '')) || 0;
+    this.sneaker.soldPrice = parseFloat(this.sneaker.soldPrice.toString().replace(/,/g, '')) || 0;
+    this.sneakerService.updateSneaker(this.sneaker)
+  }
+
   get pricePerKM(): number {
     return this.sneaker.currentDistance === 0 ? this.sneaker.purchasedPrice : this.sneaker.purchasedPrice / this.sneaker.currentDistance;
   }
@@ -42,4 +49,26 @@ export class PriceOverviewComponent implements OnInit {
       return 'bg-red-600 text-white';
     }
   }
+  get actualPrice(): number {
+    const diff = this.sneaker.purchasedPrice - this.sneaker.soldPrice;
+    return diff >= 0 ? diff : 0; // Show cost only if not earning profit
+  }
+
+  get profit(): number {
+    return this.sneaker.soldPrice > this.sneaker.purchasedPrice
+      ? this.sneaker.soldPrice - this.sneaker.purchasedPrice
+      : 0;
+  }
+
+  // Calculates price per KM after selling the sneaker
+  get pricePerKMAfterSold(): number {
+    if (this.profit > 0) {
+      return 0; // Profit means no cost per KM
+    }
+    const actualPrice = this.actualPrice;
+    return this.sneaker.currentDistance > 0
+      ? actualPrice / this.sneaker.currentDistance
+      : 0;
+  }
+  
 }
