@@ -6,7 +6,7 @@
   
   <div class="flex items-center space-x-4">
     <p class="font-medium">Price per KM:</p>
-    <a>
+    <a [routerLink]="'/price-info'">
       <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           fill="currentColor" viewBox="0 0 24 24">
           <path fill-rule="evenodd"
@@ -17,7 +17,7 @@
   </div>
   <div class="flex items-center space-x-4 pt-4">
     <p class="font-semibold pr-8">{{ pricePerKM | number }}</p>
-    <span *ngIf="pricePerKMCategory" [ngClass]="pricePerKMCategoryClass"
+    <span *ngIf="pricePerKMCategory" [ngClass]="getpricePerKMCategoryClass(pricePerKM)"
         class="px-2 py-1 rounded-lg text-xs font-bold">
         {{ pricePerKMCategory }}
     </span>
@@ -41,7 +41,7 @@
   <p class="font-medium">Price per KM After Sold:</p>
   <div class="flex items-center space-x-4 pt-4">
     <p class="font-semibold pr-8">{{ pricePerKMAfterSold | number }}</p>
-    <span *ngIf="pricePerKMCategory" [ngClass]="pricePerKMCategoryClass"
+    <span *ngIf="pricePerKMCategory" [ngClass]="getpricePerKMCategoryClass(pricePerKMAfterSold)"
       class="px-2 py-1 rounded-lg text-xs font-bold">
       {{ pricePerKMCategory }}
     </span>

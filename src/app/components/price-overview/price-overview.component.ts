@@ -8,7 +8,7 @@ import { PriceFormatDirective } from '../../shared/price-format.directive';
 @Component({
   selector: 'app-price-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterModule,PriceFormatDirective],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './price-overview.component.html',
   styleUrl: './price-overview.component.scss'
 })
@@ -38,10 +38,10 @@ export class PriceOverviewComponent implements OnInit {
     }
   }
   
-  get pricePerKMCategoryClass(): string {
-    if (this.pricePerKM < 5000) {
+  getpricePerKMCategoryClass(price:number): string {
+    if (price < 5000) {
       return 'bg-green-600 text-white';
-    } else if (this.pricePerKM < 10000) {
+    } else if (price< 10000) {
       return 'bg-yellow-600 text-white';
     } else {
       return 'bg-red-600 text-white';
@@ -68,5 +68,6 @@ export class PriceOverviewComponent implements OnInit {
       ? actualPrice / this.sneaker.currentDistance
       : 0;
   }
+  
   
 }
