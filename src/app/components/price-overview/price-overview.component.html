@@ -17,9 +17,9 @@
   </div>
   <div class="flex items-center space-x-4 pt-4">
     <p class="font-semibold pr-8">{{ pricePerKM | number }}</p>
-    <span *ngIf="pricePerKMCategory" [ngClass]="getpricePerKMCategoryClass(pricePerKM)"
+    <span *ngIf="getPricePerKMCategory(pricePerKM)" [ngClass]="getPricePerKMCategoryClass(pricePerKM)"
         class="px-2 py-1 rounded-lg text-xs font-bold">
-        {{ pricePerKMCategory }}
+        {{ getPricePerKMCategory(pricePerKM) }}
     </span>
   </div>
 </div>
@@ -41,9 +41,9 @@
   <p class="font-medium">Price per KM After Sold:</p>
   <div class="flex items-center space-x-4 pt-4">
     <p class="font-semibold pr-8">{{ pricePerKMAfterSold | number }}</p>
-    <span *ngIf="pricePerKMCategory" [ngClass]="getpricePerKMCategoryClass(pricePerKMAfterSold)"
+    <span *ngIf="getPricePerKMCategory(pricePerKMAfterSold)" [ngClass]="getPricePerKMCategoryClass(pricePerKMAfterSold)"
       class="px-2 py-1 rounded-lg text-xs font-bold">
-      {{ pricePerKMCategory }}
+      {{ getPricePerKMCategory(pricePerKMAfterSold) }}
     </span>
   </div>
 

@@ -28,17 +28,17 @@ export class PriceOverviewComponent implements OnInit {
     return this.sneaker.currentDistance === 0 ? this.sneaker.purchasedPrice : this.sneaker.purchasedPrice / this.sneaker.currentDistance;
   }
 
-  get pricePerKMCategory(): string {
-    if (this.pricePerKM < 5000) {
+  getPricePerKMCategory(price:number): string {
+    if (price < 5000) {
       return 'Well Spent';
-    } else if (this.pricePerKM < 10000) {
+    } else if (price < 10000) {
       return 'Decent';
     } else {
       return 'Overpriced';
     }
   }
   
-  getpricePerKMCategoryClass(price:number): string {
+  getPricePerKMCategoryClass(price:number): string {
     if (price < 5000) {
       return 'bg-green-600 text-white';
     } else if (price< 10000) {
