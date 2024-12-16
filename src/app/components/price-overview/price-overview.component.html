@@ -1,6 +1,6 @@
 <div class="bg-gray-800 shadow rounded-lg p-4 border border-gray-700 text-left">
   <p class="font-medium pb-4">Purchased Price:</p>
-  <input priceFormat [(ngModel)]="sneaker.purchasedPrice" (change)="updateSneaker()"
+  <input [(ngModel)]="sneaker.purchasedPrice" (change)="updateSneaker()"
     class="font-semibold bg-transparent">
   <hr class="my-2" />
   
@@ -25,8 +25,8 @@
 </div>
 
 <div class="bg-gray-800 shadow rounded-lg p-4 mt-4 border border-gray-700 text-left">
-  <p class="font-medium">Sold Price:</p>
-  <input priceFormat [(ngModel)]="sneaker.soldPrice" (change)="updateSneaker()"
+  <p class="font-medium pb-4">Sold Price:</p>
+  <input [(ngModel)]="sneaker.soldPrice" (change)="updateSneaker()"
     class="font-semibold bg-transparent">
   <hr class="my-2" />
   

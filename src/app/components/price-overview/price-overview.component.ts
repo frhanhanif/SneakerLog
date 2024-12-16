@@ -21,8 +21,6 @@ export class PriceOverviewComponent implements OnInit {
       console.log(this.sneaker)
   }
   updateSneaker(){
-    this.sneaker.purchasedPrice = parseFloat(this.sneaker.purchasedPrice.toString().replace(/,/g, '')) || 0;
-    this.sneaker.soldPrice = parseFloat(this.sneaker.soldPrice.toString().replace(/,/g, '')) || 0;
     this.sneakerService.updateSneaker(this.sneaker)
   }
 
