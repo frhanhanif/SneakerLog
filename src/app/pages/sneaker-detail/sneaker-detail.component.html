@@ -18,7 +18,7 @@
   <!-- Circular Progress and Counters -->
 <div class="flex items-center justify-center space-x-12 pt-4">
   <app-circle-progress [percentage] = "percentage">
-    <div class="mt-4 text-sm items-center text-center pl-2">
+    <div class="mt-4 text-sm items-center text-center">
       Distance : {{ sneaker.currentDistance }} &nbsp; /         
       <input
       type="number"
@@ -92,7 +92,7 @@
   <app-price-overview [sneaker]="sneaker"></app-price-overview>
 </div>
 
-<div class="flex items-center justify-center space-x-6">
+<div class="flex items-center justify-center mt-2 mb-24">
   <!-- <app-save-sneaker></app-save-sneaker> -->
   <app-delete-sneaker [id]="id"></app-delete-sneaker>
 </div>
