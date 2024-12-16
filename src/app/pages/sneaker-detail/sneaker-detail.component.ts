@@ -26,7 +26,6 @@ export default class SneakerDetailComponent implements OnInit {
   sneaker:any;
   id!:number;
   percentage:number = 0;
-  targetDistance:number = 500
   price:number = 300000;
   usageCount:number = 0
 
@@ -87,6 +86,18 @@ export default class SneakerDetailComponent implements OnInit {
         this.sneaker.currentDistance = 0;
       }
 
+      this.sneakerService.updateSneaker(this.sneaker);
+      this.calculatePercentage()
+    }
+  }
+
+  targetDistance(){
+    if (this.sneaker) {
+      if (this.sneaker.targetDistance > 9999) {
+        this.sneaker.targetDistance = 9999;
+      } else if (this.sneaker.targetDistance < 0) {
+        this.sneaker.targetDistance = 0;
+      }
       this.sneakerService.updateSneaker(this.sneaker);
       this.calculatePercentage()
     }
