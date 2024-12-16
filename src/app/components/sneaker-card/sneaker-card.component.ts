@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Sneaker } from '../../shared/sneaker.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sneaker-card',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './sneaker-card.component.html',
   styleUrl: './sneaker-card.component.scss'
 })

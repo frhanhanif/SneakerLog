@@ -15,7 +15,7 @@
             </div>
             <div class="text-right">
               <div class="text-sm text-gray-300">Purchased: {{ sneaker.purchasedDate}}</div>
-              <div class="text-sm text-gray-300">Price: Rp{{ sneaker.purchasedPrice}}</div>
+              <div class="text-sm text-gray-300">Price: Rp{{ sneaker.purchasedPrice | number:'1.0-2'}}</div>
             </div>
           </div>
           <div class="text-xs text-gray-300">Usage: {{sneaker.usageCount}}x </div>
