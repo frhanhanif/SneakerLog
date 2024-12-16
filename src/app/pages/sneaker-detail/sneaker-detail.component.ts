@@ -46,14 +46,16 @@ export default class SneakerDetailComponent implements OnInit {
   }
 
   incrUsageCount(){
-    if(this.usageCount<999){
-      this.usageCount++
+    if(this.sneaker && this.usageCount<999){
+      this.sneaker.usageCount++
+      this.updateSneaker()
     }
   }
 
   decrUsageCount(){
-    if(this.usageCount>0){
-      this.usageCount--
+    if(this.sneaker && this.usageCount>0){
+      this.sneaker.usageCount--
+      this.updateSneaker()
     }
   }
   incrDistance(){
