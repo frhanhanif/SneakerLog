@@ -26,13 +26,13 @@
 <!-- Circular Progress and Counters -->
 <div class="flex items-center justify-center pt-4 mr-4">
   <app-circle-progress [percentage]="percentage">
-    <div class="mt-4 text-base items-center justify-center space-x-2">
+    <div class="mt-4 text-base items-center justify-center">
       <span>Distance (KM) : &nbsp;{{ sneaker.currentDistance }} &nbsp; /</span>
       <input
         type="text" 
         inputmode="numeric"
         pattern="[0-9]*"
-        class="flex-shrink-0 rounded-xl bg-transparent max-w-[2rem] text-left focus:border"
+        class="flex-shrink-0 rounded-xl bg-transparent max-w-[2.5rem] text-center focus:border"
         [(ngModel)]="sneaker.targetDistance"
         (change)="targetDistance()"
         required
