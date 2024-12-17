@@ -47,6 +47,16 @@ export class PriceOverviewComponent implements OnInit {
       return 'bg-red-600 text-white';
     }
   }
+
+  setTargetDistance(): void {
+    const wellSpentThreshold = 4999; // Define the PricePerKM threshold
+    
+    if (this.sneaker.purchasedPrice > 0) {
+      // Calculate the target distance to achieve a PricePerKM < 5000
+      this.sneaker.targetDistance = Math.ceil(this.sneaker.purchasedPrice / wellSpentThreshold);
+    }
+  }
+
   get actualPrice(): number {
     const diff = this.sneaker.purchasedPrice - this.sneaker.soldPrice;
     return diff >= 0 ? diff : 0; // Show cost only if not earning profit

@@ -24,15 +24,15 @@
 </div>
 
 <!-- Circular Progress and Counters -->
-<div class="flex items-center justify-center space-x-12 pt-4">
+<div class="flex items-center justify-center space-x-4 pt-4">
   <app-circle-progress [percentage]="percentage">
-    <div class="mt-4 text-base items-center text-center">
-      Distance : {{ sneaker.currentDistance }} &nbsp; /
+    <div class="mt-4 text-base flex items-center justify-center space-x-2">
+      <span>Distance (KM) : &nbsp;{{ sneaker.currentDistance }} &nbsp; /</span>
       <input
         type="text" 
         inputmode="numeric"
         pattern="[0-9]*"
-        class="flex-shrink-0 rounded-xl bg-transparent max-w-[2.5rem] text-center focus:border"
+        class="flex-shrink-0 rounded-xl bg-transparent max-w-[2rem] text-center focus:border"
         [(ngModel)]="sneaker.targetDistance"
         (change)="targetDistance()"
         required
@@ -108,7 +108,20 @@
   </div>
 </div>
 
-<div class="p-16 pb-8 text-base">
+
+
+<div class="px-16 pb-8 text-base">
+  <div class="pt-20 pb-8 text-sm text-center">
+    <button
+      type="button" 
+      (click)="setTargetDistance()"
+      class="bg-green-600 rounded-lg font-semibold border-2 border-green-800 px-4 py-2 
+             hover:bg-green-700 hover:border-green-500 transition ease-in-out duration-200
+             shadow-lg"
+    >
+      Set Target Distance to Well Spent
+    </button>
+  </div>
   <app-price-overview [sneaker]="sneaker"></app-price-overview>
 </div>
 

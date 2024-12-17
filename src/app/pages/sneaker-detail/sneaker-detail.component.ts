@@ -77,6 +77,16 @@ export default class SneakerDetailComponent implements OnInit {
      Math.round((this.sneaker.currentDistance/this.sneaker.targetDistance) * 100);
   }
 
+  setTargetDistance(): void {
+    const wellSpentThreshold = 4999; // Define the PricePerKM threshold
+    
+    if (this.sneaker.purchasedPrice > 0) {
+      // Calculate the target distance to achieve a PricePerKM < 5000
+      this.sneaker.targetDistance = Math.ceil(this.sneaker.purchasedPrice / wellSpentThreshold);
+      this.calculatePercentage()
+    }
+  }
+
   inputDistance(){
     if (this.sneaker) {
       if (this.sneaker.currentDistance > 9999) {
