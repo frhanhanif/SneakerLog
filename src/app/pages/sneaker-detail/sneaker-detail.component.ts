@@ -83,6 +83,7 @@ export default class SneakerDetailComponent implements OnInit {
     if (this.sneaker.purchasedPrice > 0) {
       // Calculate the target distance to achieve a PricePerKM < 5000
       this.sneaker.targetDistance = Math.ceil(this.sneaker.purchasedPrice / wellSpentThreshold);
+      this.sneakerService.updateSneaker(this.sneaker);
       this.calculatePercentage()
     }
   }
