@@ -70,7 +70,7 @@
               formControlName="brand"
               id="brand"
               (change)="onBrandChange($event)"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 focus:border-blue-500"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 focus:border-blue-500"
               required
             >
               <option *ngFor="let brand of brands" [value]="brand.value">
@@ -86,7 +86,7 @@
             <input
               formControlName="brand"
               id="otherBrand"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
               placeholder="Enter Other Brand"
               required
             />
@@ -100,13 +100,13 @@
               formControlName="model"
               name="model"
               id="model"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
               placeholder="Model name"
               required
             />
           </div>
 
-          <div type="number" class="col-span-2 sm:col-span-1">
+          <div class="col-span-2 sm:col-span-1">
             <label for="purchased-price" class="block mb-2 text-sm font-medium">
               Purchased Price
             </label>
@@ -117,11 +117,11 @@
               type="text" 
               inputmode="numeric"
               pattern="[0-9]*"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
               required
             />
           </div>
-          <div type="number" class="col-span-2 sm:col-span-1">
+          <div class="col-span-2 sm:col-span-1">
             <label for="purchased-price" class="block mb-2 text-sm font-medium">
               Sold Price
             </label>
@@ -129,7 +129,10 @@
               formControlName="soldPrice"
               name="sold-price"
               id="sold-price"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
+              type="text" 
+              inputmode="numeric"
+              pattern="[0-9]*"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
               required
             />
           </div>
@@ -142,7 +145,7 @@
               type="date"
               name="purchased-date"
               id="purchased-date"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
               placeholder="Purchased date"
             />
           </div>
@@ -154,11 +157,13 @@
               Current Distance (KM)
             </label>
             <input
-              type="number"
               formControlName="currentDistance"
               name="current-distance"
               id="current-distance"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
+              type="text" 
+              inputmode="numeric"
+              pattern="[0-9]*"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
               placeholder="0KM"
             />
           </div>
@@ -167,11 +172,13 @@
               Target Distance (KM)
             </label>
             <input
-              type="number"
               formControlName="targetDistance"
               name="target-distance"
               id="target-distance"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
+              type="text" 
+              inputmode="numeric"
+              pattern="[0-9]*"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
               placeholder="~300KM"
             />
           </div>
@@ -184,7 +191,7 @@
               formControlName="usageCount"
               name="usage-count"
               id="usage-count"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500"
             />
           </div>
         </div>
