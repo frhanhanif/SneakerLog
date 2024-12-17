@@ -2,57 +2,73 @@
 
 <div class="p-4 pt-16 px-12 text-xl">
   <div class="flex justify-between items-center">
-    <input [(ngModel)]="sneaker.brand" (change)="updateSneaker()" 
-    class="font-extrabold bg-transparent max-w-[12rem]"/>
-    <h2 class="text-right text-sm">Purchased: </h2>
+    <input
+      [(ngModel)]="sneaker.brand"
+      (change)="updateSneaker()"
+      class="font-extrabold bg-transparent max-w-[12rem]"
+    />
+    <h2 class="text-right text-sm">Purchased:</h2>
   </div>
   <div class="flex justify-between items-center">
-    <input [(ngModel)]="sneaker.model" (change)="updateSneaker()" 
-    class="font-extrabold bg-transparent max-w-[12rem]"/>
-    <input [(ngModel)]="sneaker.purchasedDate" (change)="updateSneaker()"
-    class="text-sm bg-transparent max-w-[5rem]"/>
+    <input
+      [(ngModel)]="sneaker.model"
+      (change)="updateSneaker()"
+      class="font-extrabold bg-transparent max-w-[12rem]"
+    />
+    <input
+      [(ngModel)]="sneaker.purchasedDate"
+      (change)="updateSneaker()"
+      class="text-sm bg-transparent max-w-[5rem]"
+    />
   </div>
-
 </div>
 
-  <!-- Circular Progress and Counters -->
+<!-- Circular Progress and Counters -->
 <div class="flex items-center justify-center space-x-12 pt-4">
-  <app-circle-progress [percentage] = "percentage">
-    <div class="mt-4 text-sm items-center text-center">
-      Distance : {{ sneaker.currentDistance }} &nbsp; /         
+  <app-circle-progress [percentage]="percentage">
+    <div class="mt-4 text-base items-center text-center">
+      Distance : {{ sneaker.currentDistance }} &nbsp; /
       <input
-      type="number"
-      class="flex-shrink-0 rounded-xl bg-transparent text-sm max-w-[2.5rem] text-center focus:border"
-      [(ngModel)]="sneaker.targetDistance"
-      (change)="targetDistance()"
-      required
+        type="text" 
+        inputmode="numeric"
+        pattern="[0-9]*"
+        class="flex-shrink-0 rounded-xl bg-transparent max-w-[2.5rem] text-center focus:border"
+        [(ngModel)]="sneaker.targetDistance"
+        (change)="targetDistance()"
+        required
       />
     </div>
   </app-circle-progress>
 
   <div class="flex flex-col space-y-4">
-
     <!-- Usage Counter -->
     <div class="flex flex-col items-center space-y-1">
       <label class="text-sm font-medium mb-2">Usage Count :</label>
       <div class="flex items-center space-x-4">
         <button
-          type="button" id="decrement-button" (click)="decrUsageCount()"
-          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex 
-          items-center justify-center rounded-md h-6 w-6 text-2xl">
-            -
+          type="button"
+          id="decrement-button"
+          (click)="decrUsageCount()"
+          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6 text-2xl"
+        >
+          -
         </button>
         <input
-          type="number"
+          type="text" 
+          inputmode="numeric"
+          pattern="[0-9]*"
           id="counter-input"
-          class="flex-shrink-0 rounded-xl p-1 bg-transparent text-sm max-w-[2.5rem] text-center focus:border"
+          class="flex-shrink-0 rounded-xl p-1 bg-transparent text-base max-w-[2.5rem] text-center focus:border"
           [value]="sneaker.usageCount"
           required
         />
         <button
-          type="button" id="increment-button"  (click)="incrUsageCount()"
-          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6 text-2xl">
-            +
+          type="button"
+          id="increment-button"
+          (click)="incrUsageCount()"
+          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6 text-2xl"
+        >
+          +
         </button>
       </div>
     </div>
@@ -62,33 +78,37 @@
       <label class="text-sm font-medium mb-2">Current Distance :</label>
       <div class="flex items-center space-x-4">
         <button
-          type="button" id="decrement-button" (click)="decrDistance()"
-          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 
-          inline-flex items-center justify-center rounded-md h-6 w-6 text-2xl">
-            -
+          type="button"
+          id="decrement-button"
+          (click)="decrDistance()"
+          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6 text-2xl"
+        >
+          -
         </button>
         <input
-          type="number"
+          type="text" 
+          inputmode="numeric"
+          pattern="[0-9]*"
           id="counter-input"
-          class="flex-shrink-0 rounded-xl p-1 bg-transparent text-sm max-w-[3rem] text-center focus:border"
+          class="flex-shrink-0 rounded-xl p-1 bg-transparent text-base max-w-[3rem] text-center focus:border"
           [(ngModel)]="sneaker.currentDistance"
           (change)="inputDistance()"
           required
         />
         <button
-          type="button" id="increment-button" (click)="incrDistance()"
-          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex 
-          items-center justify-center rounded-md h-6 w-6 text-2xl">
-            +
+          type="button"
+          id="increment-button"
+          (click)="incrDistance()"
+          class="flex-shrink-0 bg-blue-600 hover:bg-blue-800 inline-flex items-center justify-center rounded-md h-6 w-6 text-2xl"
+        >
+          +
         </button>
       </div>
     </div>
-
   </div>
-
 </div>
 
-<div class="p-16 pb-8 text-sm">
+<div class="p-16 pb-8 text-base">
   <app-price-overview [sneaker]="sneaker"></app-price-overview>
 </div>
 
@@ -96,4 +116,3 @@
   <!-- <app-save-sneaker></app-save-sneaker> -->
   <app-delete-sneaker [id]="id"></app-delete-sneaker>
 </div>
-

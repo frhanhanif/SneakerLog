@@ -1,50 +1,80 @@
 <div class="bg-gray-800 shadow rounded-lg p-4 border border-gray-700 text-left">
   <p class="font-medium pb-4">Purchased Price:</p>
-  <input [(ngModel)]="sneaker.purchasedPrice" (change)="updateSneaker()"
-    class="font-semibold bg-transparent">
+  <input
+    type="text" 
+    inputmode="numeric"
+    pattern="[0-9]*"
+    [(ngModel)]="sneaker.purchasedPrice"
+    (change)="updateSneaker()"
+    class="font-semibold bg-transparent"
+  />
   <hr class="my-2" />
-  
+
   <div class="flex items-center space-x-4">
     <p class="font-medium">Price per KM:</p>
     <a [routerLink]="'/price-info'">
-      <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          fill="currentColor" viewBox="0 0 24 24">
-          <path fill-rule="evenodd"
-              d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm9.408-5.5a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM10 10a1 1 0 1 0 0 2h1v3h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4a1 1 0 0 0-1-1h-2Z"
-              clip-rule="evenodd" />
+      <svg
+        class="w-5 h-5 text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm9.408-5.5a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM10 10a1 1 0 1 0 0 2h1v3h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4a1 1 0 0 0-1-1h-2Z"
+          clip-rule="evenodd"
+        />
       </svg>
     </a>
   </div>
   <div class="flex items-center space-x-4 pt-4">
     <p class="font-semibold pr-8">{{ pricePerKM | number }}</p>
-    <span *ngIf="getPricePerKMCategory(pricePerKM)" [ngClass]="getPricePerKMCategoryClass(pricePerKM)"
-        class="px-2 py-1 rounded-lg text-xs font-bold">
-        {{ getPricePerKMCategory(pricePerKM) }}
+    <span
+      *ngIf="getPricePerKMCategory(pricePerKM)"
+      [ngClass]="getPricePerKMCategoryClass(pricePerKM)"
+      class="px-2 py-1 rounded-lg text-xs font-bold"
+    >
+      {{ getPricePerKMCategory(pricePerKM) }}
     </span>
   </div>
 </div>
 
-<div class="bg-gray-800 shadow rounded-lg p-4 mt-4 border border-gray-700 text-left">
+<div
+  class="bg-gray-800 shadow rounded-lg p-4 mt-4 border border-gray-700 text-left"
+>
   <p class="font-medium pb-4">Sold Price:</p>
-  <input [(ngModel)]="sneaker.soldPrice" (change)="updateSneaker()"
-    class="font-semibold bg-transparent">
+  <input
+    type="text" 
+    inputmode="numeric"
+    pattern="[0-9]*"
+    [(ngModel)]="sneaker.soldPrice"
+    (change)="updateSneaker()"
+    class="font-semibold bg-transparent"
+  />
   <hr class="my-2" />
-  
+
   <p class="font-medium pt-2">Actual Price:</p>
-  <p *ngIf="profit <= 0" class="font-semibold pt-4">{{ actualPrice | number }}</p>
+  <p *ngIf="profit <= 0" class="font-semibold pt-4">
+    {{ actualPrice | number }}
+  </p>
   <div *ngIf="profit > 0" class="bg-green-800 rounded-lg p-2 mt-2">
     <p class="font-medium text-green-300">Profit Earned:</p>
     <p class="font-semibold pt-2 text-green-200">{{ profit | number }}</p>
   </div>
-  
+
   <hr class="my-2" />
   <p class="font-medium">Price per KM After Sold:</p>
   <div class="flex items-center space-x-4 pt-4">
     <p class="font-semibold pr-8">{{ pricePerKMAfterSold | number }}</p>
-    <span *ngIf="getPricePerKMCategory(pricePerKMAfterSold)" [ngClass]="getPricePerKMCategoryClass(pricePerKMAfterSold)"
-      class="px-2 py-1 rounded-lg text-xs font-bold">
+    <span
+      *ngIf="getPricePerKMCategory(pricePerKMAfterSold)"
+      [ngClass]="getPricePerKMCategoryClass(pricePerKMAfterSold)"
+      class="px-2 py-1 rounded-lg text-xs font-bold"
+    >
       {{ getPricePerKMCategory(pricePerKMAfterSold) }}
     </span>
   </div>
-
 </div>
