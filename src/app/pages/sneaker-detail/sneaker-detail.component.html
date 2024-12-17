@@ -24,21 +24,8 @@
 </div>
 
 <!-- Circular Progress and Counters -->
-<div class="flex items-center justify-center pt-4 mr-4">
-  <app-circle-progress [percentage]="percentage">
-    <div class="mt-4 text-base items-center justify-center">
-      <span>Distance (KM) : &nbsp;{{ sneaker.currentDistance }} &nbsp; /</span>
-      <input
-        type="text" 
-        inputmode="numeric"
-        pattern="[0-9]*"
-        class="flex-shrink-0 rounded-xl bg-transparent max-w-[2.5rem] text-center focus:border"
-        [(ngModel)]="sneaker.targetDistance"
-        (change)="targetDistance()"
-        required
-      />
-    </div>
-  </app-circle-progress>
+<div class="flex space-x-5 items-center justify-center pt-4 mr-4">
+  <app-circle-progress [percentage]="percentage"></app-circle-progress>
 
   <div class="flex flex-col space-y-4">
     <!-- Usage Counter -->
@@ -111,7 +98,19 @@
 
 
 <div class="px-16 pb-8 text-base">
-  <div class="pt-20 pb-8 text-sm text-center">
+  <div class="pb-8 text-sm text-center">
+    <div class="mt-4 pb-8 text-base items-center justify-center">
+      <span>Distance (KM) : &nbsp;{{ sneaker.currentDistance }} &nbsp; /</span>
+      <input
+        type="text" 
+        inputmode="numeric"
+        pattern="[0-9]*"
+        class="flex-shrink-0 rounded-xl bg-transparent max-w-[2.5rem] text-center focus:border"
+        [(ngModel)]="sneaker.targetDistance"
+        (change)="targetDistance()"
+        required
+      />
+    </div>
     <button
       type="button" 
       (click)="setTargetDistance()"
