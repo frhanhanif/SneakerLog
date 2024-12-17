@@ -14,6 +14,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 export class AddSneakerComponent {
 
   sneakerForm : FormGroup;
+isOtherBrandSelected: boolean = false;
   constructor(private fb:FormBuilder, private sneakerService:SneakerService){
     this.sneakerForm = this.fb.group({
       id:[null],
@@ -74,6 +75,15 @@ export class AddSneakerComponent {
     }
   }
   
+  onBrandChange(event: any) {
+    const selectedValue = event.target.value;
+    this.isOtherBrandSelected = selectedValue === 'Other';
+
+    if (this.isOtherBrandSelected) {
+      this.sneakerForm.get('brand')?.reset(); // Clear value if custom brand
+    }
+  }
+
   async submitForm(): Promise<void> {
     if(this.sneakerForm.valid) {
       const newSneaker = this.sneakerForm.value;

@@ -1,11 +1,11 @@
 <div class="text-xs fixed top-1 right-2">
-    V2.5
+    V2.6
 </div>
 
 @if (sneakers.length>0) {
     <h1 class="  font-bold text-2xl p-4">Sneaker List</h1>
     <h2 class="  font-bold text-xl p-4">Active ({{sneakers.length}})</h2>
-    <div class="m-2 pb-16">
+    <div class="m-2 pb-24">
         @for(sneaker of sneakers; track sneaker){
             <a [routerLink]="'/sneaker-detail/' + sneaker.id">
                 <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>

@@ -27,7 +27,6 @@ export default class SneakerDetailComponent implements OnInit {
   id!:number;
   percentage:number = 0;
   price:number = 300000;
-  usageCount:number = 0
 
   activatedRout = inject(ActivatedRoute)
   sneakerService = inject(SneakerService)
@@ -45,14 +44,14 @@ export default class SneakerDetailComponent implements OnInit {
   }
 
   incrUsageCount(){
-    if(this.sneaker && this.usageCount<999){
+    if(this.sneaker && this.sneaker.usageCount<999){
       this.sneaker.usageCount++
       this.updateSneaker()
     }
   }
 
   decrUsageCount(){
-    if(this.sneaker && this.usageCount>0){
+    if(this.sneaker && this.sneaker.usageCount>0){
       this.sneaker.usageCount--
       this.updateSneaker()
     }

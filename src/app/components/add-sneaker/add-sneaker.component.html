@@ -1,8 +1,8 @@
-<div class="fixed bottom-16 right-2 m-4"> 
+<div class="fixed bottom-16 right-2 m-4 xl:right-24 lg:right-24"> 
     <button 
       (click)="openModal()" 
       type="button" 
-      class="inline-flex items-center justify-center w-16 h-16 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 shadow-lg"
+      class="inline-flex items-center justify-center w-14 h-14 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 shadow-lg"
     >
       <svg 
         class="w-6 h-6 text-white" 
@@ -45,17 +45,28 @@
             <form [formGroup]="sneakerForm" (ngSubmit)="submitForm()" class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="brand" 
-                        class="block mb-2 text-sm font-medium  ">
+                        <label for="brand" class="block mb-2 text-sm font-medium">
                             Brand
                         </label>
-                        <select formControlName="brand" id="brand" class="border text-sm rounded-lg block w-full p-2.5 
-                        bg-gray-600 border-gray-500 focus:border-blue-500  " required>
+                        <select formControlName="brand" id="brand" 
+                        (change)="onBrandChange($event)"
+                        class="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 focus:border-blue-500" required>
                             <option *ngFor="let brand of brands" [value]="brand.value" >
                                 {{ brand.label }}
                             </option>
                         </select>
                     </div>
+
+                    <div *ngIf="isOtherBrandSelected" class="col-span-2 sm:col-span-1">
+                        <label for="customBrand" class="block mb-2 text-sm font-medium  ">
+                           Other Brand
+                        </label>
+                        <input formControlName="brand" id="otherBrand" class="border text-sm rounded-lg block w-full p-2.5 
+                        bg-gray-600 border-gray-500   " 
+                         placeholder="Enter Other Brand" required>
+                    </div>
+
+
                     <div class="col-span-2 sm:col-span-1">
                         <label for="Model" class="block mb-2 text-sm font-medium  ">
                            Model
@@ -64,6 +75,7 @@
                         bg-gray-600 border-gray-500   " 
                          placeholder="Model name" required>
                     </div>
+
                     <div type="number" class="col-span-2 sm:col-span-1">
                         <label for="purchased-price" class="block mb-2 text-sm font-medium  ">
                            Purchased Price
@@ -116,8 +128,11 @@
                         bg-gray-600 border-gray-500">
                     </div>
                 </div>
-                <button type="submit" class="  inline-flex items-center
-                 bg-button hover:bg-button font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <button type="submit" 
+                [disabled]="sneakerForm.invalid"
+                class="inline-flex items-center bg-button hover:bg-button 
+                font-medium rounded-lg text-sm px-5 py-2.5 text-center
+                disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
                     Add new shoes
                 </button>
             </form>
