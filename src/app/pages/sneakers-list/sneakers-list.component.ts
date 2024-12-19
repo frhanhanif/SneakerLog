@@ -7,6 +7,7 @@ import { SneakerCardComponent } from '../../components/sneaker-card/sneaker-card
 import { ReloadPageComponent } from "../../components/reload-page/reload-page.component";
 import {   CdkDrag,
   CdkDragDrop,
+  CdkDragHandle,
   CdkDragPlaceholder,
   CdkDropList,
   moveItemInArray, } from "@angular/cdk/drag-drop"
@@ -18,7 +19,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-sneakers-list',
   standalone: true,
   imports: [SneakerCardComponent, RouterModule, AddSneakerComponent, ReloadPageComponent,
-    CdkDropList, CdkDrag, CdkDragPlaceholder, CommonModule
+    CdkDropList, CdkDrag, CdkDragPlaceholder, CommonModule, CdkDragHandle
   ],
   templateUrl: './sneakers-list.component.html',
   styleUrl: './sneakers-list.component.scss'
