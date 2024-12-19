@@ -1,15 +1,19 @@
 <div class="text-xs top-1 text-right pr-2">
-    V3.1
+    V4.0
 </div>
 
 @if (sneakers.length>0) {
     <h1 class="font-bold text-2xl p-4">Sneaker List</h1>
     <h2 class="font-bold text-xl p-4">Active ({{sneakers.length}})</h2>
-    <div class="m-2 pb-24">
+    <div class="m-2 pb-24 h-screen" cdkDropList (cdkDropListDropped)="onDrop($event)">
         @for(sneaker of sneakers; track sneaker){
-            <a [routerLink]="'/sneaker-detail/' + sneaker.id">
-                <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
-            </a>
+            <div cdkDrag class="m-4">
+                <a [routerLink]="'/sneaker-detail/' + sneaker.id">
+                    <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
+                    <div class="bg-gray-800 border-4 border-dotted rounded-xl
+                    border-gray-500 min-h-32" *cdkDragPlaceholder></div>
+                </a>
+            </div>
         }
     </div>
 }

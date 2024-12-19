@@ -8,5 +8,5 @@ export interface Sneaker {
     currentDistance: number; // Distance traveled in KM
     targetDistance: number; // Target distance in KM
     usageCount: number; // Number of uses
-    // estimatedPrice?: number; // Optional, estimated current price
+    order: number;
 }

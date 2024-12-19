@@ -20,7 +20,7 @@ export class SneakerService {
    }
 
    private async loadSneakers() {
-    const sneakers = await this.db.sneakers.toArray();
+    const sneakers = await this.db.sneakers.orderBy('order').toArray();
     this.sneakersSubject.next(sneakers);
   }
 
@@ -54,6 +54,10 @@ export class SneakerService {
     } catch (error) {
       console.log('Error updating sneaker =>',error)
     }
+  }
+
+  async updateSneakerOrder(sneakers: Sneaker[]) {
+    await this.db.sneakers.bulkPut(sneakers);
   }
 
   async deleteSneaker(id:number){
