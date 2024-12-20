@@ -29,6 +29,7 @@ export default class SneakersListComponent implements OnInit {
   isSneaker: boolean = true
   sneakers:Sneaker[]=[]
   sneakerService = inject(SneakerService)
+  isDropdown = false;
 
   // constructor(private sneakerService: SneakerService) {}
   ngOnInit(): void {
@@ -51,6 +52,10 @@ export default class SneakersListComponent implements OnInit {
     });
     await this.sneakerService.updateSneakerOrder(this.sneakers);
     console.log(this.sneakers)
+  }
+
+  toggleDropdown() {
+    this.isDropdown = !this.isDropdown
   }
 
 

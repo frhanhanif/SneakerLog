@@ -1,11 +1,29 @@
 <div class="text-xs top-1 text-right pr-2">
-    V4.1
+    V4.2
 </div>
 
 @if (sneakers.length>0) {
     <h1 class="font-bold text-2xl p-4">Sneaker List</h1>
-    <h2 class="font-bold text-xl p-4">Active ({{sneakers.length}})</h2>
-    <div class="m-2 pb-28" cdkDropList (cdkDropListDropped)="onDrop($event)">
+
+    <h2 class="font-bold text-xl p-4 flex items-center justify-between">
+        Active ({{ sneakers.length }})
+        <button 
+          (click)="toggleDropdown()"
+          class="focus:outline-none">
+          <svg 
+            [class.rotate-180]="isDropdown" 
+            class="w-5 h-5 transition-transform duration-200"
+            fill="currentColor" 
+            viewBox="0 0 20 20">
+            <path 
+              fill-rule="evenodd" 
+              d="M5.293 9.707a1 1 0 011.414 0L10 13.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" 
+              clip-rule="evenodd">
+            </path>
+          </svg>
+        </button>
+    </h2>
+    <div *ngIf="isDropdown" class="m-2 pb-8" cdkDropList (cdkDropListDropped)="onDrop($event)">
         @for(sneaker of sneakers; track sneaker){
             <div cdkDrag class="mx-4 my-2">
                 <div 
