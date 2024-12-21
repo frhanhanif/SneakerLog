@@ -29,7 +29,7 @@ export default class SneakersListComponent implements OnInit {
   isSneaker: boolean = true
   sneakers:Sneaker[]=[]
   sneakerService = inject(SneakerService)
-  isDropdown = false;
+  isDropdown = true;
 
   // constructor(private sneakerService: SneakerService) {}
   ngOnInit(): void {

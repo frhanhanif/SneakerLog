@@ -1,46 +1,47 @@
 <div class="text-xs top-1 text-right pr-2">
-    V4.2
+    V4.3
 </div>
 
 @if (sneakers.length>0) {
-    <h1 class="font-bold text-2xl p-4">Sneaker List</h1>
-
-    <h2 class="font-bold text-xl p-4 flex items-center justify-between">
-        Active ({{ sneakers.length }})
-        <button 
-          (click)="toggleDropdown()"
-          class="focus:outline-none">
-          <svg 
-            [class.rotate-180]="isDropdown" 
-            class="w-5 h-5 transition-transform duration-200"
-            fill="currentColor" 
-            viewBox="0 0 20 20">
-            <path 
-              fill-rule="evenodd" 
-              d="M5.293 9.707a1 1 0 011.414 0L10 13.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" 
-              clip-rule="evenodd">
-            </path>
-          </svg>
-        </button>
-    </h2>
-    <div *ngIf="isDropdown" class="m-2 pb-8" cdkDropList (cdkDropListDropped)="onDrop($event)">
-        @for(sneaker of sneakers; track sneaker){
-            <div cdkDrag class="mx-4 my-2">
-                <div 
-                    cdkDragHandle
-                    class="bg-blue-600 inline-flex items-center justify-center rounded-full p-2 cursor-grab">
-                    <svg width="18px" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
-                      <path d="M0 0h24v24H0z" fill="none"></path>
-                    </svg>
+    <div class="pb-20">
+        <h1 class="font-bold text-2xl p-4">Sneaker List</h1>
+        <h2 class="font-bold text-xl p-4 flex items-center justify-between">
+            Active ({{ sneakers.length }})
+            <button
+              (click)="toggleDropdown()"
+              class="focus:outline-none">
+              <svg
+                [class.rotate-180]="isDropdown"
+                class="w-5 h-5 transition-transform duration-200"
+                fill="currentColor"
+                viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 9.707a1 1 0 011.414 0L10 13.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd">
+                </path>
+              </svg>
+            </button>
+        </h2>
+        <div *ngIf="isDropdown" class="m-2 pb-8" cdkDropList (cdkDropListDropped)="onDrop($event)">
+            @for(sneaker of sneakers; track sneaker){
+                <div cdkDrag class="mx-4 my-2">
+                    <div
+                        cdkDragHandle
+                        class="bg-blue-600 inline-flex items-center justify-center rounded-full p-2 cursor-grab">
+                        <svg width="18px" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                          <path d="M0 0h24v24H0z" fill="none"></path>
+                        </svg>
+                    </div>
+                    <a [routerLink]="'/sneaker-detail/' + sneaker.id">
+                        <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
+                        <div class="bg-gray-800 border-4 border-dotted rounded-xl
+                        border-gray-500 min-h-32" *cdkDragPlaceholder></div>
+                    </a>
                 </div>
-                <a [routerLink]="'/sneaker-detail/' + sneaker.id">
-                    <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
-                    <div class="bg-gray-800 border-4 border-dotted rounded-xl
-                    border-gray-500 min-h-32" *cdkDragPlaceholder></div>
-                </a>
-            </div>
-        }
+            }
+        </div>
     </div>
 }
 @else {
