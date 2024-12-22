@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import { Sneaker } from '../../shared/sneaker.model'
 import { SneakerService } from '../../shared/sneaker.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DatabaseService } from '../../shared/database.service';
 
 @Component({
   selector: 'app-add-sneaker',
@@ -15,7 +16,10 @@ export class AddSneakerComponent {
 
   sneakerForm : FormGroup;
 isOtherBrandSelected: boolean = false;
-  constructor(private fb:FormBuilder, private sneakerService:SneakerService){
+  constructor(
+    private db:DatabaseService,
+    private fb:FormBuilder, 
+    private sneakerService:SneakerService){
     this.sneakerForm = this.fb.group({
       id:[null],
       brand:['', Validators.required],
@@ -26,6 +30,7 @@ isOtherBrandSelected: boolean = false;
       currentDistance:[0,Validators.min(0)],
       targetDistance:[300,Validators.min(1)],
       usageCount:[0,Validators.min(0)],
+      isActive: [true],
     })
   }
 
@@ -88,6 +93,11 @@ isOtherBrandSelected: boolean = false;
     if(this.sneakerForm.valid) {
       const newSneaker = this.sneakerForm.value;
       try {
+        //set the Order
+        const lastOrder = await this.db.sneakers.orderBy('order').last()
+        newSneaker.order = (lastOrder?.order || 0) + 1;
+
+        //add sneaker to DB
         await this.sneakerService.addSneaker(newSneaker);
         console.log('Sneaker added:', newSneaker);
         this.sneakerForm.reset(this.getDefaultFormValues());

@@ -4,7 +4,11 @@
 
 @if (sneakers.length>0) {
     <div class="pb-20">
-        <h1 class="font-bold text-2xl p-4">Sneaker List</h1>
+        <div class="flex p-4 space-x-6">
+            <h1 class="font-bold text-2xl">Sneaker List</h1>
+            <app-reload-page></app-reload-page>
+        </div>
+
         <h2 class="font-bold text-xl p-4 flex items-center justify-between">
             Active ({{ sneakers.length }})
             <button
@@ -37,7 +41,7 @@
                     <a [routerLink]="'/sneaker-detail/' + sneaker.id">
                         <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
                         <div class="bg-gray-800 border-4 border-dotted rounded-xl
-                        border-gray-500 min-h-32" *cdkDragPlaceholder></div>
+                        border-gray-500 min-h-32 transition-transform" *cdkDragPlaceholder></div>
                     </a>
                 </div>
             }
@@ -46,13 +50,12 @@
 }
 @else {
     <div class="py-8 px-4 mx-auto max-w-screen-xl mt-40 text-center lg:py-16 lg:px-12">
-        <h1 class="mb-4 text-2xl font-semibold  ">
+        <h1 class="mb-4 text-2xl font-semibold">
             Add your first pair of shoes by clicking '+' button
         </h1>
     </div>
 }
 
-<app-reload-page></app-reload-page>
 <app-add-sneaker></app-add-sneaker>
 
 
