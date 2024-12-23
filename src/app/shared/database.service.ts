@@ -10,7 +10,7 @@ export class DatabaseService extends Dexie {
 
   constructor() {
     super('SneakerDatabase');
-    this.version(6).stores({
+    this.version(7).stores({
       sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount, category',
     });
   
