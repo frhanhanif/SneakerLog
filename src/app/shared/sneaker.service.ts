@@ -19,7 +19,7 @@ export class SneakerService {
    }
 
    private async loadSneakers() {
-    const sneakers = await this.db.sneakers.orderBy('order').toArray();
+    const sneakers = await this.db.sneakers.toArray();
     this.sneakersSubject.next(sneakers);
   }
 

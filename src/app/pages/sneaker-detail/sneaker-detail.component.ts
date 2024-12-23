@@ -127,15 +127,12 @@ export default class SneakerDetailComponent implements OnInit {
   }
 
  setSold(){
-    this.sneaker.status = 'sold'
-    this.sneaker.order = 9999;
+    this.sneaker.category = 'sold'
     this.sneakerService.updateSneaker(this.sneaker)   
-    console.log(`Sneaker with ID ${this.id} status changed to 'sold'`)
   }
 
   updateSneaker(){
     this.sneakerService.updateSneaker(this.sneaker);
   }
-
 
 }

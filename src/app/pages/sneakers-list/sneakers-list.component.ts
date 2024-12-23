@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-sneakers-list',
   standalone: true,
   imports: [SneakerCardComponent, RouterModule, AddSneakerComponent, ReloadPageComponent,
-    CdkDropList, CdkDrag, CdkDragPlaceholder, CommonModule, CdkDragHandle
+    CommonModule
   ],
   templateUrl: './sneakers-list.component.html',
   styleUrl: './sneakers-list.component.scss'
@@ -53,22 +53,23 @@ export default class SneakersListComponent implements OnInit {
     URL.revokeObjectURL(url);
   }
 
-  onDrop(event: CdkDragDrop<Sneaker[]>) {
-    moveItemInArray(this.sneakers, event.previousIndex, event.currentIndex);
-    this.updateSneakerOrder()
+
+  filteredSneakers(category:string){
+    return this.sneakers.filter(data => data.category===category)
   }
 
-  filteredSneakers(status:string){
-    return this.sneakers.filter(data => data.status===status)
-  }
+  // onDrop(event: CdkDragDrop<Sneaker[]>) {
+  //   moveItemInArray(this.sneakers, event.previousIndex, event.currentIndex);
+  //   this.updateSneakerOrder()
+  // }
 
-  private async updateSneakerOrder() {
-    this.sneakers.forEach((sneaker, index) => {
-      sneaker.order = index;
-    });
-    await this.sneakerService.updateSneakerOrder(this.sneakers);
-    console.log(this.sneakers)
-  }
+  // private async updateSneakerOrder() {
+  //   this.sneakers.forEach((sneaker, index) => {
+  //     sneaker.order = index;
+  //   });
+  //   await this.sneakerService.updateSneakerOrder(this.sneakers);
+  //   console.log(this.sneakers)
+  // }
 
   toggleActive() {
     this.isActive = !this.isActive

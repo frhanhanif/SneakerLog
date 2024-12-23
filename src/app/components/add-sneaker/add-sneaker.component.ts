@@ -30,7 +30,7 @@ isOtherBrandSelected: boolean = false;
       currentDistance:[0,Validators.min(0)],
       targetDistance:[300,Validators.min(1)],
       usageCount:[0,Validators.min(0)],
-      status: ['active'],
+      category:['active']
     })
   }
 
@@ -45,7 +45,7 @@ isOtherBrandSelected: boolean = false;
       currentDistance: 0,
       targetDistance: 300,
       usageCount: 0,
-      status:'active'
+      category:'active'
     };
   }
 
@@ -94,10 +94,6 @@ isOtherBrandSelected: boolean = false;
     if(this.sneakerForm.valid) {
       const newSneaker = this.sneakerForm.value;
       try {
-        //set the Order
-        const lastOrder = await this.db.sneakers.orderBy('order').last()
-        newSneaker.order = (lastOrder?.order || 0) + 1;
-
         //add sneaker to DB
         await this.sneakerService.addSneaker(newSneaker);
         console.log('Sneaker added:', newSneaker);

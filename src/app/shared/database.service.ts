@@ -10,22 +10,33 @@ export class DatabaseService extends Dexie {
 
   constructor() {
     super('SneakerDatabase');
-    console.log('check dbservice')
-    // Define the database schema
-    // this.version(1).stores({
-    //   sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount, order, isActive', 
-    //   // '++id' defines an auto-incrementing primary key
-    // });
-
-    // this.sneakers = this.table('sneakers');
-
-    this.version(5).stores({
-      sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount, order, status'
-  })
-
+    this.version(6).stores({
+      sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount, category',
+    });
+  
       this.sneakers = this.table('sneakers');
 
-  
-    
   }
 }
+// constructor() {
+//   super('SneakerDatabase');
+
+//   // Define the schema for version 6
+//   this.version(6).stores({
+//     sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount, order, status',
+//   }).upgrade(async (transaction) => {
+//     const sneakersTable = transaction.table('sneakers');
+//     const sneakers = await sneakersTable.toArray();
+
+//     // Ensure all records are re-saved with the new structure
+//     await Promise.all(
+//       sneakers.map(async (sneaker) => {
+//         // Re-save the record to include the new schema structure
+//         await sneakersTable.put(sneaker);
+//       })
+//     );
+//   });
+
+//   this.sneakers = this.table('sneakers');
+// }
+// }
