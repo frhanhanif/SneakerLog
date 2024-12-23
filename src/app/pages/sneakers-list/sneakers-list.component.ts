@@ -42,6 +42,16 @@ export default class SneakersListComponent implements OnInit {
     )
   }
   
+  async exportData(){
+    const allSneakers = this.sneakers
+    const blob = new Blob([JSON.stringify(allSneakers, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'sneaker-data.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
 
   onDrop(event: CdkDragDrop<Sneaker[]>) {
     moveItemInArray(this.sneakers, event.previousIndex, event.currentIndex);

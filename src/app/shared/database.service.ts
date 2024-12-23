@@ -17,7 +17,6 @@ export class DatabaseService extends Dexie {
     //   // '++id' defines an auto-incrementing primary key
     // });
 
-    // // Populate table reference
     // this.sneakers = this.table('sneakers');
 
     this.version(5).stores({
