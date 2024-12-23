@@ -9,5 +9,5 @@ export interface Sneaker {
     targetDistance: number; // Target distance in KM
     usageCount: number; // Number of uses
     order: number;
-    isActive:boolean;
+    status: string;
 }

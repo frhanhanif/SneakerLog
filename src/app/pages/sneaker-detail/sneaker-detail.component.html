@@ -46,7 +46,8 @@
           pattern="[0-9]*"
           id="counter-input"
           class="flex-shrink-0 rounded-xl p-1 bg-transparent text-base max-w-[2.5rem] text-center focus:border"
-          [value]="sneaker.usageCount"
+          [(ngModel)]="sneaker.usageCount"
+          (change)="inputUsage()"
           required
         />
         <button
@@ -120,6 +121,13 @@
     >
       Set Target Distance to Well Spent
     </button>
+    <button
+    type="button"
+    (click)="setSold()"
+    class="mt-6 border-2 border-red-600 rounded-lg px-4 py-2 
+        bg-red-600 text-white hover:bg-transparent hover:text-red-600">
+    Sold
+  </button>
   </div>
   <app-price-overview [sneaker]="sneaker"></app-price-overview>
 </div>

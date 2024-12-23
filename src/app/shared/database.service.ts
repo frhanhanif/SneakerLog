@@ -10,6 +10,7 @@ export class DatabaseService extends Dexie {
 
   constructor() {
     super('SneakerDatabase');
+    console.log('check dbservice')
     // Define the database schema
     // this.version(1).stores({
     //   sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount, order, isActive', 
@@ -19,18 +20,13 @@ export class DatabaseService extends Dexie {
     // // Populate table reference
     // this.sneakers = this.table('sneakers');
 
-    this.version(2).stores({
-      sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount, order, isActive'
-    }).upgrade(async (tx) => {
-      const sneakers = await tx.table('sneakers').toArray();
-      await Promise.all(
-        sneakers.map(async (sneaker) => {
-          if (sneaker.isActive === undefined) {
-            sneaker.isActive = true; // Default value
-            await tx.table('sneakers').put(sneaker);
-          }
-        })
-      );
-    });
+    this.version(5).stores({
+      sneakers: '++id, brand, model, purchasedPrice, soldPrice, purchasedDate, currentDistance, targetDistance, usageCount, order, status'
+  })
+
+      this.sneakers = this.table('sneakers');
+
+  
+    
   }
 }

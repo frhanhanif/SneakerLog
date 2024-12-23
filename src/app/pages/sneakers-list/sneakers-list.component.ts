@@ -29,7 +29,8 @@ export default class SneakersListComponent implements OnInit {
   isSneaker: boolean = true
   sneakers:Sneaker[]=[]
   sneakerService = inject(SneakerService)
-  isDropdown = true;
+  isActive = true;
+  isSold = false;
 
   // constructor(private sneakerService: SneakerService) {}
   ngOnInit(): void {
@@ -40,10 +41,15 @@ export default class SneakersListComponent implements OnInit {
       }
     )
   }
+  
 
   onDrop(event: CdkDragDrop<Sneaker[]>) {
     moveItemInArray(this.sneakers, event.previousIndex, event.currentIndex);
     this.updateSneakerOrder()
+  }
+
+  filteredSneakers(status:string){
+    return this.sneakers.filter(data => data.status===status)
   }
 
   private async updateSneakerOrder() {
@@ -54,8 +60,12 @@ export default class SneakersListComponent implements OnInit {
     console.log(this.sneakers)
   }
 
-  toggleDropdown() {
-    this.isDropdown = !this.isDropdown
+  toggleActive() {
+    this.isActive = !this.isActive
+  }
+
+  toggleSold(){
+    this.isSold = !this.isSold
   }
 
 

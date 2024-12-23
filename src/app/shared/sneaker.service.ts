@@ -14,7 +14,6 @@ export class SneakerService {
   constructor(private db: DatabaseService) {
     this.sneakersSubject = new BehaviorSubject<Sneaker[]>([]);
     this.sneakersObservable = this.sneakersSubject.asObservable();
-
     // Load initial data from IndexedDB
     this.loadSneakers();
    }

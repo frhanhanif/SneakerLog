@@ -30,7 +30,7 @@ isOtherBrandSelected: boolean = false;
       currentDistance:[0,Validators.min(0)],
       targetDistance:[300,Validators.min(1)],
       usageCount:[0,Validators.min(0)],
-      isActive: [true],
+      status: ['active'],
     })
   }
 
@@ -45,6 +45,7 @@ isOtherBrandSelected: boolean = false;
       currentDistance: 0,
       targetDistance: 300,
       usageCount: 0,
+      status:'active'
     };
   }
 

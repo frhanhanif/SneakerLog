@@ -50,6 +50,19 @@ export default class SneakerDetailComponent implements OnInit {
     }
   }
 
+  inputUsage(){
+    if (this.sneaker) {
+      if (this.sneaker.usageCount > 999) {
+        this.sneaker.currentDistance = 999;
+      } else if (this.sneaker.usageCount < 0) {
+        this.sneaker.currentDistance = 0;
+      }
+
+      this.sneakerService.updateSneaker(this.sneaker);
+      this.calculatePercentage()
+    }
+  }
+
   decrUsageCount(){
     if(this.sneaker && this.sneaker.usageCount>0){
       this.sneaker.usageCount--
@@ -111,6 +124,13 @@ export default class SneakerDetailComponent implements OnInit {
       this.sneakerService.updateSneaker(this.sneaker);
       this.calculatePercentage()
     }
+  }
+
+ setSold(){
+    this.sneaker.status = 'sold'
+    this.sneaker.order = 9999;
+    this.sneakerService.updateSneaker(this.sneaker)   
+    console.log(`Sneaker with ID ${this.id} status changed to 'sold'`)
   }
 
   updateSneaker(){
