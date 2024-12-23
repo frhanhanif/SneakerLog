@@ -29,7 +29,7 @@
         </h2>
         <div *ngIf="isActive" class="m-2 pb-4">
             @for(sneaker of filteredSneakers('active'); track sneaker){
-                <div class="p-4">
+                <div class="p-2">
                     <a [routerLink]="'/sneaker-detail/' + sneaker.id">
                         <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
                     </a>
@@ -57,7 +57,7 @@
         </h2>
         <div *ngIf="isSold" class="m-2">
             @for(sneaker of filteredSneakers('sold'); track sneaker){
-                <div class="p-4">
+                <div class="p-2">
                     <a [routerLink]="'/sneaker-detail/' + sneaker.id">
                         <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
                     </a>
