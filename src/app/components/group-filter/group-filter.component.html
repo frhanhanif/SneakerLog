@@ -1,0 +1,39 @@
+<div class="px-6 py-2 relative inline-block">
+    <button 
+    (click)="toggleDrop()"
+    class="flex font-semibold text-sm p-2.5 border-white border rounded-xl focus:border-blue-600">
+        {{filter}}
+        <svg
+        [class.rotate-180]="!isToggleDrop"
+        class="ml-2 w-5 h-5 transition-transform duration-200"
+        fill="currentColor"
+        viewBox="0 0 20 20">
+        <path
+          fill-rule="evenodd"
+          d="M5.293 9.707a1 1 0 011.414 0L10 13.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd">
+        </path>
+          </svg>
+    </button>
+    
+    @if(isToggleDrop){
+        <div 
+        class="absolute left-6 top-full mt-2 w-32 bg-gray-800 border border-white text-sm rounded-xl shadow-lg">
+          <button 
+          (click)="changeFilter('All')"
+            class="w-full px-4 py-2 text-left hover:bg-gray-700 hover:rounded-xl focus:outline-none">
+            All
+          </button>
+          <button 
+            (click)="changeFilter('Brand')"
+            class="w-full px-4 py-2 text-left hover:bg-gray-700 hover:rounded-xl focus:outline-none">
+            Brand
+          </button>
+          <button 
+          (click)="changeFilter('Category')"
+            class="w-full px-4 py-2 text-left hover:bg-gray-700 hover:rounded-xl focus:outline-none">
+            Category
+          </button>
+      </div>
+    }
+</div>

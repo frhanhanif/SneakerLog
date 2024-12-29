@@ -9,61 +9,13 @@
             <app-reload-page></app-reload-page>
         </div>
 
-        <h2 class="font-bold text-xl p-4 flex items-center justify-between">
-            Active ({{ filteredSneakers('active').length }})
-            <button
-              (click)="toggleActive()"
-              class="focus:outline-none">
-              <svg
-                [class.rotate-180]="isActive"
-                class="w-5 h-5 transition-transform duration-200"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 9.707a1 1 0 011.414 0L10 13.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd">
-                </path>
-              </svg>
-            </button>
-        </h2>
-        <div *ngIf="isActive" class="m-2 pb-4">
-            @for(sneaker of filteredSneakers('active'); track sneaker){
-                <div class="p-2">
-                    <a [routerLink]="'/sneaker-detail/' + sneaker.id">
-                        <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
-                    </a>
-                </div>
-            }
-        </div>
+        <app-group-filter (filterChange)="onFilterChange($event)"></app-group-filter>
 
-        <h2 class="font-bold text-xl p-4 flex items-center justify-between">
-            Sold/Retired ({{filteredSneakers('sold').length}})
-            <button
-              (click)="toggleSold()"
-              class="focus:outline-none">
-              <svg
-                [class.rotate-180]="isSold"
-                class="w-5 h-5 transition-transform duration-200"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 9.707a1 1 0 011.414 0L10 13.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd">
-                </path>
-              </svg>
-            </button>
-        </h2>
-        <div *ngIf="isSold" class="m-2">
-            @for(sneaker of filteredSneakers('sold'); track sneaker){
-                <div class="p-2">
-                    <a [routerLink]="'/sneaker-detail/' + sneaker.id">
-                        <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
-                    </a>
-                </div>
-            }
-        </div>
+        <app-sneaker-group
+            [sneakers] = "sneakers"
+            [activeFilter] ="activeFilter"
+        ></app-sneaker-group>
+
         <div class="pt-8 flex justify-center">
             <button
             (click)="exportData()"
@@ -86,4 +38,30 @@
 
 
 
-
+<!-- <h2 class="font-bold text-xl p-4 flex items-center justify-between">
+    All Sneakers ({{sneakers.length}})
+    <button
+      (click)="toggleActive()"
+      class="focus:outline-none">
+      <svg
+        [class.rotate-180]="!isActive"
+        class="w-5 h-5 transition-transform duration-200"
+        fill="currentColor"
+        viewBox="0 0 20 20">
+        <path
+          fill-rule="evenodd"
+          d="M5.293 9.707a1 1 0 011.414 0L10 13.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd">
+        </path>
+      </svg>
+    </button>
+</h2>
+<div *ngIf="isActive" class="m-2 pb-4">
+    @for(sneaker of sneakers; track sneaker){
+        <div class="p-2">
+            <a [routerLink]="'/sneaker-detail/' + sneaker.id">
+                <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
+            </a>
+        </div>
+    }
+</div> -->

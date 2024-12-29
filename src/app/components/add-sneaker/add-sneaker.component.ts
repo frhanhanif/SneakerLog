@@ -4,6 +4,8 @@ import { Sneaker } from '../../shared/sneaker.model'
 import { SneakerService } from '../../shared/sneaker.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DatabaseService } from '../../shared/database.service';
+import { brands } from '../../shared/brands.model';
+import { categories } from '../../shared/categories.model';
 
 @Component({
   selector: 'app-add-sneaker',
@@ -15,7 +17,12 @@ import { DatabaseService } from '../../shared/database.service';
 export class AddSneakerComponent {
 
   sneakerForm : FormGroup;
-isOtherBrandSelected: boolean = false;
+  isOtherBrandSelected: boolean = false;
+  brands = brands
+  selectedBrand: string = '';
+  isModal : boolean = false
+  categories = categories
+
   constructor(
     private db:DatabaseService,
     private fb:FormBuilder, 
@@ -30,7 +37,7 @@ isOtherBrandSelected: boolean = false;
       currentDistance:[0,Validators.min(0)],
       targetDistance:[300,Validators.min(1)],
       usageCount:[0,Validators.min(0)],
-      category:['active']
+      category:['']
     })
   }
 
@@ -45,26 +52,9 @@ isOtherBrandSelected: boolean = false;
       currentDistance: 0,
       targetDistance: 300,
       usageCount: 0,
-      category:'active'
+      category:''
     };
   }
-
-  brands = [
-    { value: '', label: 'Select Brand' },
-    { value: 'Adidas', label: 'Adidas' },
-    { value: 'Nike', label: 'Nike' },
-    { value: 'Asics', label: 'Asics' },
-    { value: 'New Balance', label: 'New Balance' },
-    { value: 'Brooks', label: 'Brooks' },
-    { value: 'Hoka', label: 'Hoka' },
-    { value: 'Puma', label: 'Puma' },
-    { value: 'Converse', label: 'Converse' },
-    { value: 'Vans', label: 'Vans' },
-    { value: 'Other', label: 'Other' },
-  ];
-
-  selectedBrand: string = '';
-  isModal : boolean = false
 
   openModal(){
     this.isModal = true;

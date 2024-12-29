@@ -21,6 +21,21 @@
       class="text-sm bg-transparent max-w-[5rem]"
     />
   </div>
+  <div class="pt-4 text-sm justify-between items-center">
+    Category :
+  </div>
+  <select
+    [(ngModel)]="sneaker.category"
+    class="text-lg font-extrabold rounded-lg w-36 bg-transparent"
+    (change)="updateSneaker()"
+  >
+    <option *ngFor="let category of categories" [value]="category.value" 
+    class="bg-gray-800 text-base">
+      {{ category.label }}
+    </option>
+  </select>
+
+  
 </div>
 
 <!-- Circular Progress and Counters -->
@@ -121,13 +136,7 @@
     >
       Set Target Distance to Well Spent
     </button>
-    <button
-    type="button"
-    (click)="setSold()"
-    class="mt-6 border-2 border-red-600 rounded-lg px-4 py-2 
-        bg-red-600 text-white hover:bg-transparent hover:text-red-600">
-    Sold
-  </button>
+
   </div>
   <app-price-overview [sneaker]="sneaker"></app-price-overview>
 </div>

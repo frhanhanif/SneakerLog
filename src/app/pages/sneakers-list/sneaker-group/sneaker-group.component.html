@@ -1,0 +1,52 @@
+<!-- GroupedSneakersComponent.html -->
+<div>
+    @if (activeFilter === 'All') {
+        <div class="text-xl font-bold p-4 pb-0">
+            All Sneaker ({{sneakers.length}})
+        </div>
+        @for (sneaker of sneakers; track sneaker) {
+            <a [routerLink]="'/sneaker-detail/' + sneaker.id" class="p-2">
+                <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
+            </a>
+        }
+    } @else if (activeFilter === 'Category') {
+        @for (category of categories; track category) {
+            <div *ngIf="filteredSneakersByCategory(category.value).length > 0">
+                <h2 class="font-bold text-xl p-4 pb-0 flex items-center justify-between">
+                  {{ category.label }} ({{ filteredSneakersByCategory(category.value).length }})
+                  <button
+                    (click)="toggleCategory(category.value)"
+                    class="focus:outline-none"
+                  >
+                    <svg
+                      [class.rotate-180]="isExpanded[category.value]"
+                      class="w-5 h-5 transition-transform duration-200"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.293 9.707a1 1 0 011.414 0L10 13.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </h2>
+          
+                <div *ngIf="isExpanded[category.value]">
+                    @for (sneaker of filteredSneakersByCategory(category.value); track sneaker) {
+                        
+                        <a [routerLink]="'/sneaker-detail/' + sneaker.id" class="p-2">
+                            <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+
+    }
+
+  
+
+  </div>
+  

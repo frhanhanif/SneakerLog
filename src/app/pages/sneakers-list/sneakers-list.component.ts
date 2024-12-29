@@ -5,21 +5,17 @@ import { RouterModule } from '@angular/router';
 import { AddSneakerComponent } from '../../components/add-sneaker/add-sneaker.component';
 import { SneakerCardComponent } from '../../components/sneaker-card/sneaker-card.component';
 import { ReloadPageComponent } from "../../components/reload-page/reload-page.component";
-import {   CdkDrag,
-  CdkDragDrop,
-  CdkDragHandle,
-  CdkDragPlaceholder,
-  CdkDropList,
-  moveItemInArray, } from "@angular/cdk/drag-drop"
 import { CommonModule } from '@angular/common';
+import { GroupFilterComponent } from '../../components/group-filter/group-filter.component';
+import { SneakerGroupComponent } from './sneaker-group/sneaker-group.component';
 
 
 
 @Component({
   selector: 'app-sneakers-list',
   standalone: true,
-  imports: [SneakerCardComponent, RouterModule, AddSneakerComponent, ReloadPageComponent,
-    CommonModule
+  imports: [RouterModule, AddSneakerComponent, ReloadPageComponent,
+    CommonModule, GroupFilterComponent, SneakerGroupComponent
   ],
   templateUrl: './sneakers-list.component.html',
   styleUrl: './sneakers-list.component.scss'
@@ -29,8 +25,7 @@ export default class SneakersListComponent implements OnInit {
   isSneaker: boolean = true
   sneakers:Sneaker[]=[]
   sneakerService = inject(SneakerService)
-  isActive = true;
-  isSold = false;
+  activeFilter:string = 'All'
 
   // constructor(private sneakerService: SneakerService) {}
   ngOnInit(): void {
@@ -40,6 +35,11 @@ export default class SneakersListComponent implements OnInit {
         console.log(this.sneakers)
       }
     )
+  }
+
+  onFilterChange(filter:string){
+    this.activeFilter=filter
+    console.log('event : ', filter)
   }
   
   async exportData(){
@@ -51,32 +51,6 @@ export default class SneakersListComponent implements OnInit {
     a.download = 'sneaker-data.json';
     a.click();
     URL.revokeObjectURL(url);
-  }
-
-
-  filteredSneakers(category:string){
-    return this.sneakers.filter(data => data.category===category)
-  }
-
-  // onDrop(event: CdkDragDrop<Sneaker[]>) {
-  //   moveItemInArray(this.sneakers, event.previousIndex, event.currentIndex);
-  //   this.updateSneakerOrder()
-  // }
-
-  // private async updateSneakerOrder() {
-  //   this.sneakers.forEach((sneaker, index) => {
-  //     sneaker.order = index;
-  //   });
-  //   await this.sneakerService.updateSneakerOrder(this.sneakers);
-  //   console.log(this.sneakers)
-  // }
-
-  toggleActive() {
-    this.isActive = !this.isActive
-  }
-
-  toggleSold(){
-    this.isSold = !this.isSold
   }
 
 

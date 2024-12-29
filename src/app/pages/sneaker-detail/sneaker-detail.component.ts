@@ -9,6 +9,7 @@ import { CircleProgressComponent } from "../../components/circle-progress/circle
 import { PriceOverviewComponent } from "../../components/price-overview/price-overview.component";
 import { SneakerService } from '../../shared/sneaker.service';
 import { DatabaseService } from '../../shared/database.service';
+import { categories } from '../../shared/categories.model';
 
 
 @Component({
@@ -27,10 +28,11 @@ export default class SneakerDetailComponent implements OnInit {
   id!:number;
   percentage:number = 0;
   price:number = 300000;
-
   activatedRout = inject(ActivatedRoute)
   sneakerService = inject(SneakerService)
   db = inject(DatabaseService)
+  isToggleDrop = false;
+  categories = categories;
 
   ngOnInit(): void {
       this.activatedRout.paramMap.subscribe(
@@ -126,13 +128,12 @@ export default class SneakerDetailComponent implements OnInit {
     }
   }
 
- setSold(){
-    this.sneaker.category = 'sold'
-    this.sneakerService.updateSneaker(this.sneaker)   
-  }
-
   updateSneaker(){
     this.sneakerService.updateSneaker(this.sneaker);
+  }
+
+  toggleDrop(){
+    this.isToggleDrop=!this.isToggleDrop
   }
 
 }

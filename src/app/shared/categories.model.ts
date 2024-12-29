@@ -1,0 +1,15 @@
+export const categories = [
+    { value: '', label: 'Select Category' },
+    { value: 'Max Cushion', label: 'Max Cushion' },
+    { value: 'Daily Run', label: 'Daily Run' },
+    { value: 'Speedwork', label: 'Speedwork' },
+    { value: 'Trail', label: 'Trail' },
+    { value: 'Leather', label: 'Leather' },
+    { value: 'Gym', label: 'Gym' },
+    { value: 'Beaters', label: 'Beaters' },
+    { value: 'Reserve', label: 'Reserve' },
+    { value: 'Sold', label: 'Sold' },
+    { value: 'Retired', label: 'Retired' },
+    { value: 'Given', label: 'Given' },
+    { value: 'Other', label: 'Other' },
+  ];

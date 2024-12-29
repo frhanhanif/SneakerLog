@@ -78,7 +78,6 @@
               </option>
             </select>
           </div>
-
           <div *ngIf="isOtherBrandSelected" class="col-span-2 sm:col-span-1">
             <label for="customBrand" class="block mb-2 text-sm font-medium">
               Other Brand
@@ -91,6 +90,23 @@
               required
             />
           </div>
+
+          <div class="col-span-2 sm:col-span-1">
+            <label for="category" class="block mb-2 text-sm font-medium">
+              Category
+            </label>
+            <select
+              formControlName="category"
+              id="category"
+              class="border text-base rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 focus:border-blue-500"
+              required
+            >
+              <option *ngFor="let category of categories" [value]="category.value">
+                {{ category.label }}
+              </option>
+            </select>
+          </div>
+
 
           <div class="col-span-2 sm:col-span-1">
             <label for="Model" class="block mb-2 text-sm font-medium">
