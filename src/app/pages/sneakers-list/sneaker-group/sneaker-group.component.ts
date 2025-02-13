@@ -19,7 +19,6 @@ export class SneakerGroupComponent {
   categories = categories;
   isExpanded: { [key: string]: boolean } = {}; // To track which categories are expanded
 
-
   groupBy(array: any[], key: string): { [key: string]: any[] } {
     return array.reduce((result: { [key: string]: any[] }, item) => {
       const groupKey = item[key];

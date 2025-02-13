@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
+        path:'table-view',
+        loadComponent: () => import("./pages/home/home.component")
+    },
+    {
         path:'',
         loadComponent: () => import("./pages/sneakers-list/sneakers-list.component")
     },

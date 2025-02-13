@@ -27,6 +27,18 @@ export class SneakerService {
     return this.db.sneakers.toArray();
   }
 
+  async searchSneaker(query: string): Promise<Sneaker[]> {
+    if (!query.trim()) {
+      return this.db.sneakers.toArray(); // Return all if query is empty
+    }
+    
+    const sneakers = await this.db.sneakers.toArray();
+    return sneakers.filter(sneaker =>
+      sneaker.model.toLowerCase().includes(query.toLowerCase()) ||
+      sneaker.brand.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+
   async updateSneakerSubject() {
     const updatedSneakers = await this.db.sneakers.toArray();
     this.sneakersSubject.next(updatedSneakers);

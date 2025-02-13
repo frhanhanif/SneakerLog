@@ -8,6 +8,7 @@ import { ReloadPageComponent } from "../../components/reload-page/reload-page.co
 import { CommonModule } from '@angular/common';
 import { GroupFilterComponent } from '../../components/group-filter/group-filter.component';
 import { SneakerGroupComponent } from './sneaker-group/sneaker-group.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,7 @@ import { SneakerGroupComponent } from './sneaker-group/sneaker-group.component';
   selector: 'app-sneakers-list',
   standalone: true,
   imports: [RouterModule, AddSneakerComponent, ReloadPageComponent,
-    CommonModule, GroupFilterComponent, SneakerGroupComponent
+    CommonModule, GroupFilterComponent, SneakerGroupComponent, FormsModule
   ],
   templateUrl: './sneakers-list.component.html',
   styleUrl: './sneakers-list.component.scss'
@@ -23,18 +24,30 @@ import { SneakerGroupComponent } from './sneaker-group/sneaker-group.component';
 export default class SneakersListComponent implements OnInit {
   
   isSneaker: boolean = true
-  sneakers:Sneaker[]=[]
+  sneakers: Sneaker[] = []; // Full dataset from IndexedDB
+  filteredSneakers: Sneaker[] = []; // Holds the filtered list for search
   sneakerService = inject(SneakerService)
   activeFilter:string = 'All'
+  searchTerm: string = ''; // Holds search input value
+
 
   // constructor(private sneakerService: SneakerService) {}
   ngOnInit(): void {
     this.sneakerService.sneakersObservable.subscribe(
       (data)=>{ 
         this.sneakers=data
-        console.log(this.sneakers)
+        this.filteredSneakers = data; // Initialize with all sneakers
+        
       }
     )
+  }
+
+  onSearch(searchTerm:string) {
+    console.log(this.searchTerm)
+    this.sneakerService.searchSneaker(this.searchTerm).then((filtered) => {
+      this.filteredSneakers = filtered;
+      console.log(this.filteredSneakers)
+    });
   }
 
   onFilterChange(filter:string){

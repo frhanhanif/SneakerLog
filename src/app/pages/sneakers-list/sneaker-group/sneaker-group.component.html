@@ -4,7 +4,7 @@
         <div class="text-xl font-bold p-4 pb-0">
             All Sneaker ({{sneakers.length}})
         </div>
-        @for (sneaker of sneakers; track sneaker) {
+        @for (sneaker of sneakers; track sneaker.id) {
             <a [routerLink]="'/sneaker-detail/' + sneaker.id" class="p-2">
                 <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
             </a>
@@ -34,7 +34,7 @@
                 </h2>
           
                 <div *ngIf="isExpanded[category.value]">
-                    @for (sneaker of filteredSneakersByCategory(category.value); track sneaker) {
+                    @for (sneaker of filteredSneakersByCategory(category.value); track sneaker.id) {
                         
                         <a [routerLink]="'/sneaker-detail/' + sneaker.id" class="p-2">
                             <app-sneaker-card [sneaker]="sneaker"></app-sneaker-card>
