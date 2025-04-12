@@ -112,7 +112,7 @@ const SneakerList = () => {
         <AddSneaker updateSneakerList={updateSneakerList}/>
       </div>
       
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+      <div className="flex py-2 flex-col sm:flex-row gap-2 sm:gap-4">
         <Select
           options={sortBy}
           onChange={setSortCriteria}

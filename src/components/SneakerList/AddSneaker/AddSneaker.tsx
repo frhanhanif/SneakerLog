@@ -16,7 +16,7 @@ const AddSneaker = ({updateSneakerList}:{updateSneakerList:(sneaker:Sneaker)=> v
         className="w-full sm:w-auto"
         onClick={openModal}
         >
-          Add New Sneaker
+          <p className="text-base sm:text-sm"> Add New Sneaker </p>
       </Button>
       <SneakerModal 
         isOpen={isOpen}
