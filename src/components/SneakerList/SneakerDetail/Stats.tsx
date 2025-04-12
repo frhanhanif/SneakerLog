@@ -25,8 +25,15 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
       updateSneakerList({...sneaker, current_distance:updatedDistance})
     }
     setShowInput((prev) => !prev)
-
   }
+
+  const incrementDistance = () => {
+    setDistance(prev => parseFloat((prev + 0.5).toFixed(1)));
+  };
+
+  const decrementDistance = () => {
+    setDistance(prev => prev >= 0.5 ? parseFloat((prev - 0.5).toFixed(1)) : 0);
+  };
 
   const sneakerAge = () => {
     const sneakerDate = new Date(sneaker.purchased_date).getTime()
@@ -60,17 +67,31 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
           </div>
 
           {/* Add Distance Input + Button */}
-          <div className="pt-2 space-y-2">
+          <div className="pt-2 space-y-4">
             {showInput && (
-              <input
-                type="number"
-                inputMode="decimal"
-                step="0.5"
-                min={0}
-                value={distance}
-                onChange={(e) => setDistance(parseFloat(e.target.value))}
-                className="px-3 py-2 mr-2 w-24 border border-gray-300 dark:border-gray-600 rounded-md text-sm bg-gray-800 text-white"
-              />
+              <div className="flex items-center space-x-2">
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  min={0}
+                  value={distance}
+                  onChange={(e) => setDistance(parseFloat(e.target.value))}
+                  className="px-3 py-2 mr-2 w-24 border border-gray-300 dark:border-gray-600 rounded-md text-sm bg-gray-800 text-white"
+                  />
+                        <button
+            onClick={decrementDistance}
+            className="py-1 px-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg text-lg"
+          >
+            -
+          </button>
+          <button
+            onClick={incrementDistance}
+            className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg"
+          >
+            +
+          </button>
+          
+                </div>
             )}
 
             <button
@@ -86,7 +107,7 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
         </div>
 
         {/* Right Section: Circular Progress */}
-        <div className="w-36 h-36 sm:mr-12 mt-4">
+        <div className="w-36 h-36 sm:mr-12">
           <CircularProgressbar
             value={usagePercentage}
             text={`${usagePercentage.toFixed(2)}%`}
