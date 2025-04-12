@@ -64,6 +64,7 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
             {showInput && (
               <input
                 type="number"
+                inputMode="decimal"
                 step="0.5"
                 min={0}
                 value={distance}
