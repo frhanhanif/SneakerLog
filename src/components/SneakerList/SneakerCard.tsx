@@ -26,7 +26,7 @@ const ProgressBar = ({ progress }: { progress: number }) => {
 const SneakerCard = ({sneaker}:{sneaker:Sneaker}) => {
 
   return (
-    <div className="relative rounded-2xl border border-gray-200 bg-white py-4 px-6 dark:border-gray-800 dark:bg-white/[0.03]">
+    <div className="relative rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-white/[0.03]">
       <div className={`absolute top-4 right-4 text-lg font-bold 
           ${sneaker.status === 'ACTIVE' ? 'text-green-500' 
               : sneaker.status === 'SOLD' ? 'text-red-500' 
@@ -37,19 +37,19 @@ const SneakerCard = ({sneaker}:{sneaker:Sneaker}) => {
 
       <div className="flex">
           <div className="w-40">
-          <div className="text-xl text-gray-800 dark:text-white/90">
+          <div className="text-lg text-gray-800 dark:text-white/90">
               {sneaker.brand}
           </div>
-          <div className="text-xl font-bold text-gray-800 dark:text-white/90">
+          <div className="text-lg font-bold text-gray-800 dark:text-white/90">
               {sneaker.model}
           </div>
-          <div className="text-base text-gray-800 dark:text-gray-300">
+          <div className="text-sm text-gray-800 dark:text-gray-300">
               {sneaker.category}
           </div>
-          <div className="text-base text-nowrap text-gray-800 dark:text-gray-300">
+          <div className="text-sm text-nowrap text-gray-800 dark:text-gray-300">
               Purchased: {formatDate(sneaker.purchased_date)}
           </div>
-          <div className="text-base text-nowrap text-gray-800 dark:text-gray-300">
+          <div className="text-sm text-nowrap text-gray-800 dark:text-gray-300">
               Price: {sneaker.price.toLocaleString('en-US')}
           </div>
           </div>
