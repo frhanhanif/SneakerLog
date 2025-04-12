@@ -6,7 +6,7 @@ import Activity from "../../components/SneakerList/SneakerDetail/Activity";
 import PriceCalc from "../../components/SneakerList/SneakerDetail/PriceCalc";
 import { ChevronLeftIcon, TrashBinIcon } from "../../icons";
 import useGoBack from "../../hooks/useGoBack";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import supabase from "../../supabaseClient";
 import { Sneaker } from "../../interface/Sneaker";
@@ -18,7 +18,7 @@ import { useModal } from "../../hooks/useModal";
 
 const SneakerDetails = () => {
   const {id} = useParams<{id:string}>()
-  const [sneaker, setSneaker] = useState<Sneaker>(useLocation().state)
+  const [sneaker, setSneaker] = useState<Sneaker>()
   const {isOpen, openModal, closeModal} = useModal()
   const navigate = useNavigate()
 
@@ -45,7 +45,7 @@ const SneakerDetails = () => {
     // If it's an update, replace the existing sneaker
     if (newSneaker.id) {
       setSneaker(s => 
-        s.id === newSneaker.id ? newSneaker : s
+        s!.id === newSneaker.id ? newSneaker : s
       );
     } 
   }
