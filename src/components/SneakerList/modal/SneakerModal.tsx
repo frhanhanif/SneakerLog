@@ -6,7 +6,6 @@ import Select from "../../form/Select"
 import Button from "../../ui/button/Button"
 import { Modal } from "../../ui/modal"
 import CurrencyInput from 'react-currency-input-field';
-import { Brand } from "../AddSneaker/Brand"
 import { Category } from "../AddSneaker/Category"
 import { Sneaker } from "../../../interface/Sneaker"
 import DatePicker from "react-datepicker";
@@ -20,8 +19,6 @@ interface SneakerModalProps {
 }
 
 const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalProps) => {
-
-  const brand = Brand
   const category = Category
   const status = [
     { value: "ACTIVE", label: "Active"},
@@ -29,7 +26,8 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
     { value: "INACTIVE", label: "Inactive"}
   ]
   const [editMode, setEditMode] = useState(false)
-
+  const [brand, setBrand] = useState<{value:string,label:string}[]>([])
+  
   const initialForm = {
     brand:'',
     model:'',
@@ -50,8 +48,24 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
       setFormData(initialForm);
       setEditMode(false)
     }
-
   },[sneaker])
+
+  useEffect(() => {
+    const fetchBrand = async () => {
+      try{
+        const {data,error} = await supabase.from('brand').select('brand')
+      
+        if(error) {throw error};
+
+        console.log(data)
+        setBrand(data.map((item)=>({value:item.brand,label:item.brand})))
+      }
+      catch (err) {
+        console.error("Error fetching data : ", err)
+      }
+    }
+    fetchBrand()
+  },[])
   
   //Select change for brand dropdown
   const handleBrandChange = (selectedOption: any) => {
@@ -142,10 +156,10 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
   return (
     <>
     <Modal isOpen={isOpen} onClose={onClose} 
-      className="max-w-[700px] m-4"
+      className="max-w-[600px] m-4"
       >
       <div 
-        className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-8"
+        className="no-scrollbar relative w-full max-w-[600px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-8"
         >
 
         <div className="pr-14">
@@ -154,7 +168,7 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
             </h4>
         </div>
         <form className="flex flex-col">
-          <div className="custom-scrollbar h-[300px] overflow-y-auto px-2 pb-3">
+          <div className="custom-scrollbar max-h-[500px] overflow-y-auto px-2 pb-3">
             <div>
                 <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
                   <div>
