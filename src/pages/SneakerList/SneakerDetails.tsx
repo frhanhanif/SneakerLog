@@ -2,8 +2,8 @@ import PageBreadcrumb from "../../components/common/PageBreadCrumb"
 import "react-circular-progressbar/dist/styles.css";
 import GeneralInfo from "../../components/SneakerList/SneakerDetail/GeneralInfo";
 import Stats from "../../components/SneakerList/SneakerDetail/Stats";
-import Activity from "../../components/SneakerList/SneakerDetail/Activity";
-import PriceCalc from "../../components/SneakerList/SneakerDetail/PriceCalc";
+// import Activity from "../../components/SneakerList/SneakerDetail/Activity";
+// import PriceCalc from "../../components/SneakerList/SneakerDetail/PriceCalc";
 import { ChevronLeftIcon, TrashBinIcon } from "../../icons";
 import useGoBack from "../../hooks/useGoBack";
 import { useParams } from "react-router";

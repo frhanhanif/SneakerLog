@@ -1,7 +1,6 @@
 import { useSidebar } from "../../context/SidebarContext";
 import { ThemeToggleButton } from "../../components/common/ThemeToggleButton";
 import { CloseIcon, TextIcon } from "../../icons";
-import UserDropdown from "../../components/header/UserDropdown";
 
 const AppHeader: React.FC = () => {
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();

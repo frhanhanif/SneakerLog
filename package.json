@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "set CI=false && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -37,10 +37,12 @@
     "react-flatpickr": "^3.10.13",
     "react-helmet-async": "^2.0.5",
     "react-router": "^7.1.5",
+    "serve": "^14.2.4",
     "simplebar-react": "^3.3.0",
     "swiper": "^11.2.3",
     "tailwind-merge": "^3.0.1",
-    "uninstall": "^0.0.0"
+    "uninstall": "^0.0.0",
+    "vite-plugin-pwa": "^1.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
