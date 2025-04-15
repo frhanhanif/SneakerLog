@@ -53,7 +53,7 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
   useEffect(() => {
     const fetchBrand = async () => {
       try{
-        const {data,error} = await supabase.from('brand').select('brand')
+        const {data,error} = await supabase.from('brand').select('brand').order('brand')
       
         if(error) {throw error};
 

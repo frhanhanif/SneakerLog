@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router";
 import NotFound from "./pages/NotFound/NotFound";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
@@ -19,7 +19,7 @@ export default function App() {
         <Routes>
           {/* Dashboard Layout */}
           <Route element={<AppLayout />}>
-            <Route index path="/" element={<SneakerList />} />
+            <Route index path="/" element={<Navigate to="/sneaker-list" />} />
             <Route path="/sneaker-list" element={<SneakerList />} />
             <Route path="/card-view/sneaker-details/:id" element={<SneakerDetails />} />
           </Route>

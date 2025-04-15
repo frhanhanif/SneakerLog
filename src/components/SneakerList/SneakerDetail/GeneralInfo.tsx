@@ -14,12 +14,11 @@ const GeneralInfo  = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneak
         <div className="w-14 h-14 rounded-full flex items-center justify-center overflow-hidden">
           <img 
               src="/images/product/shoes.jpg" 
-              alt="Adidas Ultraboost"
               className="w-full h-full object-cover"
           />
         </div>          
         <div>
-          <h2 className="text-lg text font-semibold">{sneaker.brand}</h2>
+          <h2 className="text-xl text font-semibold">{sneaker.brand}</h2>
           <h2 className="text-lg text font-semibold">{sneaker.model}</h2>
           <h2 className="text-base text">{sneaker.category}</h2>
         </div>

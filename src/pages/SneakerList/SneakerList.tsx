@@ -108,7 +108,7 @@ const SneakerList = () => {
         />
       </div>
 
-      <div className="flex-none">
+      <div className="flex-none pt-2 sm:pt-0">
         <AddSneaker updateSneakerList={updateSneakerList}/>
       </div>
       

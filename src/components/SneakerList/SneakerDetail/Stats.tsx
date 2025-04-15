@@ -80,13 +80,13 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
                   />
                         <button
             onClick={decrementDistance}
-            className="py-1 px-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg text-lg"
+            className="py-1 px-3 bg-red-600 active:bg-red-700 hover:bg-red-700 text-white font-bold rounded-lg text-lg"
           >
             -
           </button>
           <button
             onClick={incrementDistance}
-            className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg"
+            className="px-3 py-1 bg-blue-600 active:bg-blue-700 hover:bg-blue-700 text-white font-bold text-lg rounded-lg"
           >
             +
           </button>
@@ -99,7 +99,7 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
                 handleToggleInput();
                 setDistance(0);
               }}
-              className="px-4 py-2 text-sm font-medium bg-green-600 hover:bg-green-700 text-white rounded-md w-fit"
+              className="px-4 py-2 text-sm font-medium bg-green-600 active:bg-green-700 hover:bg-green-700 text-white rounded-md w-fit"
             >
               {showInput? "+ Add" : "+ Update Current KM"}
             </button>

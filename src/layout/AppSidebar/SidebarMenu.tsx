@@ -29,7 +29,7 @@ const navItems: NavItem[] = [
           {
             name:"Table View",
             icon:<TableIcon/>,
-            path:"sneaker-table"
+            path:"/sneaker-table"
           }
         ]
     },
@@ -132,9 +132,28 @@ const SidebarMenu: React.FC = () => {
             )}
         </>
     )
+    
+    // opens the dropdown menu when the current page URL matches 
+    // with the submenu items inside the dropdown
+    useEffect(() => {
+      let submenuMatched = false;
+      navItems.forEach((nav, index) => {
+        if (nav.subItems) {
+          nav.subItems.forEach((subItem) => {
+            if (isActive(subItem.path)) {
+              setOpenSubmenu({index});
+              submenuMatched = true;
+            }
+          });
+        }
+      });
+    
+      if (!submenuMatched) {
+        setOpenSubmenu(null);
+      }
+    }, [location, isActive]);
 
-    useEffect(
-        () => {
+    useEffect(() => {
         if (openSubmenu !== null) {
           const key = `${openSubmenu.index}`;
           if (subMenuRefs.current[key]) {
