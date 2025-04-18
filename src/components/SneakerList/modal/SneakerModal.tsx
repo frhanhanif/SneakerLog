@@ -141,7 +141,7 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
         
           if (error) {
             console.log('Error insert data',error)
-          } else if(data && data.length>0){
+          } else{
             updateSneakerList(data[0])
           }
       }
@@ -211,7 +211,12 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
                       className="h-11 w-full rounded-lg border px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400
                         dark:bg-gray-900 text dark:placeholder:text-white/30 border-gray-300 focus:border-brand-300
                         focus:ring-brand-500/20 dark:border-gray-700  dark:focus:border-brand-800"
-                    
+                      showYearDropdown
+                      showPopperArrow={false}
+                      fixedHeight
+                      popperPlacement="top-start"
+                      minDate={new Date('2023-01-01')}
+                      maxDate={new Date('2035-12-31')}
                     />   
                   </div>
                   <div>
@@ -234,11 +239,13 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
                   </div>
                   <div>
                       <Label>Distance Goal (KM)</Label>
-                      <Select 
-                        options={category}
-                        placeholder="Select Category"
-                        onChange={handleCategoryChange}
-                        defaultValue={formData.category}  
+                      <Input 
+                      type="number" 
+                      placeholder="~300 KM"
+                      name="distance goal"
+                      value={formData.distance_goal}
+                      onChange={handleInputChange}
+                      hint="*Required"
                     />
                   </div>
                   <div>

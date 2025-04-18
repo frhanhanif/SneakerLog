@@ -11,14 +11,14 @@ const SneakerList = () => {
   const [sneakerData, setSneakerData] = useState<Sneaker[]>([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [searchInput, setSearchInput] = useState("")
-  const [sortCriteria, setSortCriteria] = useState("model_asc")
+  const [sortCriteria, setSortCriteria] = useState("date_latest")
   const [brandFilter, setBrandFilter] = useState("")
 
   const sortBy = [
+    {value:"date_latest",label:"Newest"},
+    {value:"date_earliest", label:"Oldest"},
     {value:"model_asc", label:"Model (A-Z)"},
     {value:"model_desc", label:"Model (Z-A)"},
-    {value:"date_earliest", label:"Purchased Earliest"},
-    {value:"date_latest",label:"Purchased Latest"},
     {value:"price_highest", label:"Price Highest"},
     {value:"price_lowest", label:"Price Lowest"}
   ]
@@ -48,16 +48,7 @@ const SneakerList = () => {
   )
 
   const updateSneakerList = (newSneaker: Sneaker) => {
-    // If it's an update, replace the existing sneaker
-    if (newSneaker.id) {
-      setSneakerData(sneakerData.map(sneaker => 
-        sneaker.id === newSneaker.id ? newSneaker : sneaker
-      ));
-    } 
-    // If it's a new sneaker, add it to the array
-    else {
       setSneakerData(prevData => [...prevData, newSneaker]);
-    }
   };
 
   // Get unique brands for the filter dropdown
