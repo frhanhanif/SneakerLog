@@ -217,6 +217,7 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
                       popperPlacement="top-start"
                       minDate={new Date('2023-01-01')}
                       maxDate={new Date('2035-12-31')}
+                      customInput={<input inputMode='none' />}
                     />   
                   </div>
                   <div>
