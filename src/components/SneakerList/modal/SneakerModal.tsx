@@ -8,8 +8,7 @@ import { Modal } from "../../ui/modal"
 import CurrencyInput from 'react-currency-input-field';
 import { Category } from "../AddSneaker/Category"
 import { Sneaker } from "../../../interface/Sneaker"
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { CalenderIcon } from "../../../icons"
 
 interface SneakerModalProps {
   isOpen: boolean, 
@@ -201,24 +200,31 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
                       defaultValue={formData.category}  
                     />
                   </div>
-                  <div>
+                  <div className="text">
                     <Label>Purchased Date</Label>
-                    <DatePicker
-                      selected={formData.purchased_date}
-                      onChange={handleDateChange}
-                      dateFormat="d MMMM YYYY"
-                      placeholderText="Select a date"
-                      className="h-11 w-full rounded-lg border px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400
-                        dark:bg-gray-900 text dark:placeholder:text-white/30 border-gray-300 focus:border-brand-300
-                        focus:ring-brand-500/20 dark:border-gray-700  dark:focus:border-brand-800"
-                      showYearDropdown
-                      showPopperArrow={false}
-                      fixedHeight
-                      popperPlacement="top-start"
-                      minDate={new Date('2023-01-01')}
-                      maxDate={new Date('2035-12-31')}
-                      customInput={<input inputMode='none' />}
-                    />   
+
+<div className="relative w-40">
+  <input
+    type="date"
+    value={formData.purchased_date ? new Date(formData.purchased_date).toISOString().split('T')[0] : ''}
+    onChange={(e) =>
+      handleDateChange(e.target.value ? new Date(e.target.value) : null)
+    }
+    min="2023-01-01"
+    max="2035-12-31"
+    className="w-full h-11 rounded-lg border border-gray-300 px-4 py-2.5 text-sm shadow-theme-xs 
+      focus:border-brand-300 focus:ring-brand-500/20 dark:bg-gray-900 dark:border-gray-700 dark:focus:border-brand-800
+      appearance-none"
+    style={{
+      colorScheme: 'light',
+      caretColor: 'transparent'
+    }}
+  />
+  <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+    <CalenderIcon />
+  </div>
+</div>
+
                   </div>
                   <div>
                     <Label>Price</Label>

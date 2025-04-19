@@ -89,13 +89,13 @@
     @apply bg-gray-200 rounded-full dark:bg-gray-700;
   }
   /* For Remove Date Icon */
-  input[type="date"]::-webkit-inner-spin-button,
-  input[type="time"]::-webkit-inner-spin-button,
-  input[type="date"]::-webkit-calendar-picker-indicator,
-  input[type="time"]::-webkit-calendar-picker-indicator {
+  /* input[type="date"]::-webkit-inner-spin-button, */
+  /* input[type="time"]::-webkit-inner-spin-button, */
+  /* input[type="date"]::-webkit-calendar-picker-indicator, */
+  /* input[type="time"]::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
-  }
+  } */
 }
 
 .tableCheckbox:checked ~ span span {
