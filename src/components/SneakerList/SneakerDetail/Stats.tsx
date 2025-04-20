@@ -16,7 +16,7 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
     
   const handleToggleInput = async () => {
     if (showInput) {
-      const updatedDistance = current + distance;
+      const updatedDistance = Number(current) + Number(distance);
       await supabase
         .from('sneakerlist')
         .update({current_distance:updatedDistance})
@@ -78,12 +78,12 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
                   onChange={(e) => setDistance(parseFloat(e.target.value))}
                   className="px-3 py-2 mr-2 w-24 border border-gray-300 dark:border-gray-600 rounded-md text-sm bg-gray-800 text-white"
                   />
-                        <button
-            onClick={decrementDistance}
-            className="py-1 px-3 bg-red-600 active:bg-red-700 hover:bg-red-700 text-white font-bold rounded-lg text-lg"
-          >
-            -
-          </button>
+              <button
+                onClick={decrementDistance}
+                className="py-1 px-3 bg-red-600 active:bg-red-700 hover:bg-red-700 text-white font-bold rounded-lg text-lg"
+              >
+                -
+              </button>
           <button
             onClick={incrementDistance}
             className="px-3 py-1 bg-blue-600 active:bg-blue-700 hover:bg-blue-700 text-white font-bold text-lg rounded-lg"
@@ -99,7 +99,7 @@ const Stats = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneakerList:
                 handleToggleInput();
                 setDistance(0);
               }}
-              className="px-4 py-2 text-sm font-medium bg-green-600 active:bg-green-700 hover:bg-green-700 text-white rounded-md w-fit"
+              className="px-4 py-2 text-sm font-medium bg-green-600 text-white rounded-md w-fit"
             >
               {showInput? "+ Add" : "+ Update Current KM"}
             </button>

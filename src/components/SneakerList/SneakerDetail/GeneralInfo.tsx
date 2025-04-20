@@ -18,14 +18,14 @@ const GeneralInfo  = ({sneaker, updateSneakerList}:{sneaker:Sneaker, updateSneak
           />
         </div>          
         <div>
-          <h2 className="text-xl text font-semibold">{sneaker.brand}</h2>
+          <h2 className="text-xl text font-bold">{sneaker.brand}</h2>
           <h2 className="text-lg text font-semibold">{sneaker.model}</h2>
           <h2 className="text-base text">{sneaker.category}</h2>
         </div>
       </div>
         <div className="space-y-1">
-            <p className="text text-sm">Rp {sneaker.price.toLocaleString('en-US')}</p>
-            <p className="text text-sm">Purchased: {formatDate(sneaker.purchased_date)}</p>
+            <p className="text text-base">Rp {sneaker.price.toLocaleString('en-US')}</p>
+            <p className="text text-base">Purchased: {formatDate(sneaker.purchased_date)}</p>
         </div>
       <div>
           <hr className="border-gray-600 dark:border-gray-700" />

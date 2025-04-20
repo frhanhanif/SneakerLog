@@ -33,7 +33,8 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
     category:'',
     purchased_date:null,
     price:0,
-    distance_goal:1,
+    current_distance:0,
+    distance_goal:300,
     status:'ACTIVE'
   }
 
@@ -203,27 +204,27 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
                   <div className="text">
                     <Label>Purchased Date</Label>
 
-<div className="relative w-40">
-  <input
-    type="date"
-    value={formData.purchased_date ? new Date(formData.purchased_date).toISOString().split('T')[0] : ''}
-    onChange={(e) =>
-      handleDateChange(e.target.value ? new Date(e.target.value) : null)
-    }
-    min="2023-01-01"
-    max="2035-12-31"
-    className="w-full h-11 rounded-lg border border-gray-300 px-4 py-2.5 text-sm shadow-theme-xs 
-      focus:border-brand-300 focus:ring-brand-500/20 dark:bg-gray-900 dark:border-gray-700 dark:focus:border-brand-800
-      appearance-none"
-    style={{
-      colorScheme: 'light',
-      caretColor: 'transparent'
-    }}
-  />
-  <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-    <CalenderIcon />
-  </div>
-</div>
+                  <div className="relative w-40">
+                    <input
+                      type="date"
+                      value={formData.purchased_date ? new Date(formData.purchased_date).toISOString().split('T')[0] : ''}
+                      onChange={(e) =>
+                        handleDateChange(e.target.value ? new Date(e.target.value) : null)
+                      }
+                      min="2023-01-01"
+                      max="2035-12-31"
+                      className="w-full h-11 rounded-lg border border-gray-300 px-4 py-2.5 text-sm shadow-theme-xs 
+                        focus:border-brand-300 focus:ring-brand-500/20 dark:bg-gray-900 dark:border-gray-700 dark:focus:border-brand-800
+                        appearance-none"
+                      style={{
+                        colorScheme: 'light',
+                        caretColor: 'transparent'
+                      }}
+                    />
+                    <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+                      <CalenderIcon />
+                    </div>
+                  </div>
 
                   </div>
                   <div>
@@ -245,14 +246,21 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
                     />             
                   </div>
                   <div>
-                      <Label>Distance Goal (KM)</Label>
-                      <Input 
-                      type="number" 
-                      placeholder="~300 KM"
-                      name="distance goal"
-                      value={formData.distance_goal}
-                      onChange={handleInputChange}
-                      hint="*Required"
+                    <Label>Current Distance (KM)</Label>
+                    <Input 
+                        type="number" 
+                        name="current_distance"
+                        value={formData.current_distance}
+                        onChange={handleInputChange}
+                    />
+                  </div>
+                  <div>
+                    <Label>Distance Goal (KM)</Label>
+                    <Input 
+                        type="number" 
+                        name="distance_goal"
+                        value={formData.distance_goal}
+                        onChange={handleInputChange}
                     />
                   </div>
                   <div>
