@@ -250,6 +250,7 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
                     <Input 
                         type="number" 
                         name="current_distance"
+                        inputMode="decimal"
                         value={formData.current_distance}
                         onChange={handleInputChange}
                     />
@@ -259,6 +260,7 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
                     <Input 
                         type="number" 
                         name="distance_goal"
+                        inputMode="decimal"
                         value={formData.distance_goal}
                         onChange={handleInputChange}
                     />
