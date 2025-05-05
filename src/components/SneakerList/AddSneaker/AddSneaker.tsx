@@ -13,10 +13,10 @@ const AddSneaker = ({updateSneakerList}:{updateSneakerList:(sneaker:Sneaker)=> v
         size="sm"
         variant="primary"
         startIcon={<PlusIcon className="size-5" />}
-        className="w-full sm:w-auto h-9 sm:h-11"
+        className="w-full sm:w-auto h-10"
         onClick={openModal}
         >
-          <p className="text-xs sm:text-sm"> Add New Sneaker </p>
+          <p className="text-sm"> Add New Sneaker </p>
       </Button>
       <SneakerModal 
         isOpen={isOpen}
