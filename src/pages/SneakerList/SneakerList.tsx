@@ -92,7 +92,7 @@ const SneakerList = () => {
   return (
     <>
     <div className="pb-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-      <div className="flex-auto xsm:py-2 lg:max-w-[50%]">
+      <div className="flex-auto lg:max-w-[50%]">
         <Search 
           input={setSearchInput}
           placeholder="Search by Brand or Model" 
@@ -103,20 +103,23 @@ const SneakerList = () => {
         <AddSneaker updateSneakerList={updateSneakerList}/>
       </div>
       
-      <div className="flex py-2 flex-col sm:flex-row gap-2 sm:gap-4">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
         <Select
           options={sortBy}
           onChange={setSortCriteria}
-          className="dark:bg-dark-900 text"
+          className="dark:bg-dark-900 text-xs sm:text-sm"
         />
         <Select 
           options={uniqueBrands}
           onChange={setBrandFilter} 
-          className="dark:bg-dark-900" />
+          className="dark:bg-dark-900 text-xs sm:text-sm" />
       </div>
     </div>
 
-    <div className="grid gap-2 xl:grid-cols-3 md:grid-cols-2">
+    <div className="grid text gap-2 xl:grid-cols-3 md:grid-cols-2">
+    <div className="font-bold col-span-full">
+    {brandFilter ? brandFilter : "All Sneaker"} ({sortedData.length})
+  </div>
       {sortedData.length > 0 ? 
         sortedData.map(
           data => 

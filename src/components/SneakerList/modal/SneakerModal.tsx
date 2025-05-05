@@ -163,7 +163,7 @@ const SneakerModal = ({isOpen,onClose,sneaker,updateSneakerList}: SneakerModalPr
         >
 
         <div className="pr-14">
-            <h4 className="m-2 pb-6 text-2xl font-semibold text-gray-800 dark:text-white/90">
+            <h4 className="m-2 pb-6 text-base sm:text-xl font-semibold text-gray-800 dark:text-white/90">
               {editMode? "Edit Sneaker" : "Add New Sneaker"}
             </h4>
         </div>

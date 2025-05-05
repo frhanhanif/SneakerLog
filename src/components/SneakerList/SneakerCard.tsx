@@ -16,7 +16,7 @@ const ProgressBar = ({ progress }: { progress: number }) => {
                 style={{ width: `${Math.floor(cappedProgress)}%` }}
             />
         </div>
-        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+        <p className="font-medium text-gray-800 text-xs sm:text-sm dark:text-white/90">
             {Math.floor(cappedProgress)}%
         </p>
       </div>
@@ -27,7 +27,7 @@ const SneakerCard = ({sneaker}:{sneaker:Sneaker}) => {
 
   return (
     <div className="relative rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-white/[0.03]">
-      <div className={`absolute top-4 right-4 text-lg font-bold 
+      <div className={`absolute top-4 right-4 text-base font-bold 
           ${sneaker.status === 'ACTIVE' ? 'text-green-500' 
               : sneaker.status === 'SOLD' ? 'text-red-500' 
               : 'text-gray-500'}`
@@ -37,19 +37,19 @@ const SneakerCard = ({sneaker}:{sneaker:Sneaker}) => {
 
       <div className="flex">
           <div className="w-40">
-          <div className="text-lg text-gray-800 dark:text-white/90">
+          <div className="text-base text-gray-800 dark:text-white/90">
               {sneaker.brand}
           </div>
-          <div className="text-lg font-bold text-gray-800 dark:text-white/90">
+          <div className="text-base font-bold text-gray-800 dark:text-white/90">
               {sneaker.model}
           </div>
-          <div className="text-sm text-gray-800 dark:text-gray-300">
+          <div className="text-xs sm:text-sm text-gray-800 dark:text-gray-300">
               {sneaker.category}
           </div>
-          <div className="text-sm text-nowrap text-gray-800 dark:text-gray-300">
+          <div className="text-xs sm:text-sm text-nowrap text-gray-800 dark:text-gray-300">
               Purchased: {formatDate(sneaker.purchased_date)}
           </div>
-          <div className="text-sm text-nowrap text-gray-800 dark:text-gray-300">
+          <div className="text-xs sm:text-sm text-nowrap text-gray-800 dark:text-gray-300">
               Price: {sneaker.price.toLocaleString('en-US')}
           </div>
           </div>
@@ -66,7 +66,7 @@ const SneakerCard = ({sneaker}:{sneaker:Sneaker}) => {
       </div>
 
       <div className="flex mt-2">
-          <div className="text-sm text-nowrap mr-4 text-gray-800 dark:text-gray-300">
+          <div className="text-xs sm:text-sm text-nowrap mr-4 text-gray-800 dark:text-gray-300">
               {sneaker.current_distance} / {sneaker.distance_goal} KM
           </div>
           <ProgressBar progress={(sneaker.current_distance / sneaker.distance_goal) * 100} />
