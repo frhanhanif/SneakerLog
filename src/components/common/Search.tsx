@@ -14,7 +14,7 @@ const Search = ({input,placeholder}:any) => {
                 type="text"
                 placeholder={placeholder}
                 className="h-10 w-full rounded-lg 
-                py-2 pl-12 pr-14 text-xs text
+                py-2 pl-12 pr-14 text-sm text
                 border-gray-200 bg-transparent dark:bg-dark-900
                 shadow-theme-xs placeholder:text-gray-500 
                 focus:border-brand-300 focus:outline-none 
